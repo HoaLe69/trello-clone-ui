@@ -1,5 +1,10 @@
+import { useState } from "react"
+
           function App() {
-  return <div className="App">Hello Trello App</div>
+            const [isStart , setIsStart] = useState(false)
+  return <div className="App"><div>
+    Trello hello word
+    </div></div>
 }
 
 export default App
