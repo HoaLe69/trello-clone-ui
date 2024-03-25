@@ -4,7 +4,7 @@ import classNames from 'classnames/bind'
 const cx = classNames.bind(style)
 
 const Button = () => {
-  return <button className={cx('btn')}>Test</button>
+  return <button className={cx('btn')}>Maodaika</button>
 }
 
 export default Button
