@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  height: 60px;
+  align-items: center;
+  gap: 5px;
+}
+
+.image {
+  width: 25px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.name {
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.name h1 {
+  font-weight: 800;
+  color: #253858;
+}
