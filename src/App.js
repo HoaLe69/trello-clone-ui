@@ -1,9 +1,12 @@
-import { useState } from 'react'
+import React from 'react'
+import LanddingPage from './pages/LanddingPage'
 
 function App() {
   return (
     <div className="App">
-      <div>Trello hello world</div>
+      <div>
+        <LanddingPage />
+      </div>
     </div>
   )
 }

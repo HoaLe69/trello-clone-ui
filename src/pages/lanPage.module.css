@@ -1,0 +1,78 @@
+.container {
+  background-color: red;
+  overflow: hidden;
+}
+.header {
+  height: 60px;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 0 100px;
+}
+.title {
+  color: #253858;
+  font-weight: bold;
+}
+.title h1 {
+  font-weight: 800;
+}
+.btnHeader {
+  width: 150px;
+  height: 45px;
+}
+
+.content {
+  width: 100%;
+  height: 643px;
+  background:
+    url(//images.ctfassets.net/rz1oowkt5gyp/7lTGeXbBRNRLaVk2MdBjtJ/99c266e…/white-wave-bg.svg)
+      center bottom -0.5px / 100% 14% no-repeat scroll padding-box border-box,
+    linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto
+      repeat scroll padding-box border-box rgb(82, 67, 170);
+  background-blend-mode: normal, normal;
+}
+
+.container-content {
+  display: flex;
+  justify-content: center;
+  padding: 100px;
+}
+
+.left-content {
+  width: 50%;
+  max-width: 500px;
+  color: white;
+  margin-top: 10px;
+}
+
+.left-content h1 {
+  font-size: 45px;
+}
+.left-content p {
+  font-size: 20px;
+}
+
+.content-signup {
+  display: flex;
+  width: 100%;
+  gap: 20px;
+}
+
+.content-signup input {
+  display: flex;
+  width: 300px;
+  outline: none;
+  border-radius: 6px;
+  border: none;
+  padding: 17px;
+}
+
+.right-content {
+  width: 50%;
+}
+
+.right-content img {
+  width: 100%;
+  height: 100%;
+}
