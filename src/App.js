@@ -1,12 +1,21 @@
 import React from 'react'
-import LanddingPage from './pages/landding-page'
+import { Routes, Route } from 'react-router-dom'
+import { routesPublic } from './route'
 
 function App() {
   return (
     <div className="App">
-      <div>
-        <LanddingPage />
-      </div>
+      <Routes>
+        {routesPublic.map(route => {
+          return (
+            <Route
+              path={route.path}
+              element={route.component}
+              key={route.path}
+            />
+          )
+        })}
+      </Routes>
     </div>
   )
 }

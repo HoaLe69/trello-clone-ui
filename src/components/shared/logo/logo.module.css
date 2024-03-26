@@ -1,6 +1,6 @@
 .container {
   display: flex;
-  height: 60px;
+  height: var(--header-height);
   align-items: center;
   gap: 5px;
 }
@@ -13,7 +13,7 @@
 
 .name {
   cursor: pointer;
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .name h1 {
