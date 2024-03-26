@@ -1,3 +1,7 @@
+:root {
+  --header-height: 60px;
+  --container-width: 1300px;
+}
 body {
   margin: 0;
   font-family:

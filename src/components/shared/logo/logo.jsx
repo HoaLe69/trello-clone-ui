@@ -5,7 +5,7 @@ import logoImg from '../../../assets/image/logoImg.svg'
 
 const cx = classNames.bind(styles)
 
-export default function Logo() {
+const Logo = () => {
   return (
     <div className={cx('container')}>
       <img src={logoImg} alt="logo" className={cx('image')} />
@@ -15,3 +15,5 @@ export default function Logo() {
     </div>
   )
 }
+
+export default Logo
