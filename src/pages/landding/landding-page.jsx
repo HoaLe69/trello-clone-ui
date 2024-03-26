@@ -13,7 +13,7 @@ export default function LanddingPage() {
     <div className={cx('container')} style={{ backgroundImage: `url(${bg})` }}>
       <div className={cx("header_container")}>
       <div className={cx('header')}>
-        <Logo />
+        <Logo href='/'/>
         <div className={cx('btn-login')}>
           <Button>Login</Button>
         </div>
