@@ -1,76 +1,50 @@
-/* *{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-} */
-
 .container {
   background-color: rgb(250, 251, 252);
   height: 100vh;
-  width: full;
   justify-content: center;
   align-items: center;
   display: flex;
-  position: relative;
 }
 
-.login_form {
-  /* border: 1px solid black; */
+@media (max-width: 748px) {
+  .form {
+    height: 100vh;
+    flex: 1;
+  }
+}
+.form {
+  text-align: center;
+  display: flex;
   border-radius: 3px;
-  padding: 10px 15px 10px 15px;
   align-items: center;
   justify-content: center;
-  width: 400px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   z-index: 1;
+  padding: 40px 40px;
+  width: 500px;
 }
-.header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-.content {
+.form_inner {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  gap: 10px;
+  max-width: 400px;
+  width: 100%;
+}
+.form_header {
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
-
-.content_email,
-.content_password {
-  padding: 10px 15px 10px 15px;
-  margin: 10px;
-  width: 92%;
+.form_input {
+  margin: 10px 0;
+  display: block;
+  width: 100%;
+  padding: 10px;
   border: 1px solid rgb(211, 209, 209);
-  border-radius: 3px;
 }
-.btn_login {
-  margin-top: 10px;
-}
-
-.create_acc_text {
-  margin: 20px 0px 20px 0px;
-  text-decoration: none;
+.form_link {
   color: rgb(0, 85, 204);
-}
-.forget_pass_text {
   text-decoration: none;
-  margin-bottom: 15px;
-  color: rgb(0, 85, 204);
-}
-.bg_image_left {
-  width: 25%;
-  display: flex;
-  position: absolute;
-  left: 0px;
-  bottom: 0px;
-}
-
-.bg_image_right {
-  width: 25%;
-  display: flex;
-  position: absolute;
-  right: 0px;
-  bottom: 0px;
+  display: block;
+  margin: 10px 0;
 }

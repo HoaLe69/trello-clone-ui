@@ -3,35 +3,47 @@ import React from 'react'
 import styles from './loginPage.module.css'
 import Logo from '../../components/shared/logo/logo'
 import Button from '../../components/shared/button/button'
-import BackgroundLoginPage from '../../assets/image/BackgroundLoginPage.jpg'
-import bgLoginPage from '../../assets/image/bgLoginPage.png'
-
 
 const cx = classNames.bind(styles)
 
-export default function LoginPage() {
+const LoginPage = () => {
   return (
     <div className={cx('container')}>
-      <img src={BackgroundLoginPage} className={cx('bg_image_left')} alt="" />
-        <div className = {cx('login_form')}>
-          <div className = {cx('header')}>
-            <Logo/> 
-            <div className={cx('span_text')}>
-              Log in to continue
-            </div>
+      <form className={cx('form')}>
+        <div className={cx('form_inner')}>
+          <div className={cx('form_header')}>
+            <Logo href="/" />
+            <span>Login in to continue</span>
           </div>
-
-          <div className={cx('content')}>
-                <input type="email" placeholder='Enter your email'  className={cx('content_email')} />
-                <input type="text" placeholder='Enter your password' className={cx('content_password')} />        
-                <Button className={cx('btn_login')}>Log in</Button>
-                <a className={cx('create_acc_text')} href="">Create an account</a>
-                <a className={cx('forget_pass_text')} href="">Forget password?</a>
+          <div className={cx('form_container_input')}>
+            <input
+              type="email"
+              className={cx('form_input')}
+              name="email"
+              placeholder="Enter your email"
+            />
+            <input
+              type="password"
+              className={cx('form_input')}
+              name="password"
+              placeholder="Enter your password"
+            />
           </div>
-
+          <div className="form_button">
+            <Button>Log in</Button>
+          </div>
+          <div>
+            <a href="/" className={cx('form_link')}>
+              Create an account
+            </a>
+            <a href="/" className={cx('form_link')}>
+              Forget password ?
+            </a>
+          </div>
         </div>
-      <img src={bgLoginPage} className={cx('bg_image_right')} alt="" />
-
+      </form>
     </div>
   )
 }
+
+export default LoginPage
