@@ -6,9 +6,9 @@ import { Link } from 'react-router-dom'
 
 const cx = classNames.bind(styles)
 
-const Logo = ({href}) => {
+const Logo = ({ href }) => {
   return (
-    <Link to ={href} style={{textDecoration:'none'}}>
+    <Link to={href} style={{ textDecoration: 'none' }}>
       <div className={cx('container')}>
         <img src={logoImg} alt="logo" className={cx('image')} />
         <div className={cx('name')}>

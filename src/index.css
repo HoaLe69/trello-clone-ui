@@ -2,8 +2,12 @@
   --header-height: 60px;
   --container-width: 1300px;
 }
-body {
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
   font-family:
     SF Pro Display,
     SF Pro Icons,
@@ -12,6 +16,4 @@ body {
     Helvetica,
     Arial,
     sans-serif;
-  padding: 0;
-  box-sizing: border-box;
 }
