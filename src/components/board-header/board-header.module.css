@@ -1,0 +1,76 @@
+.board_header {
+  background-color: var(--board-header-background-color);
+  backdrop-filter: blur(4px);
+}
+
+.board_header_inner {
+  padding: 12px 12px;
+  display: flex;
+  align-items: center;
+}
+
+.board_header_name {
+  font-size: 18px;
+  color: var(--text-dynamic);
+  line-height: 32px;
+}
+.board_header_action {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  display: flex;
+  align-self: center;
+  justify-items: center;
+}
+.board_header_filter_btn {
+  line-height: 20px;
+  padding: 6px;
+  color: var(--text-dynamic);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: transparent;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+}
+.board_header_filter_btn:hover {
+  cursor: pointer;
+  background-color: var(--dynamic-button-hovered);
+}
+
+.board_header_member {
+  display: flex;
+  align-items: center;
+  padding: 0 6px;
+  border-left: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.member_avatar {
+  width: 30px;
+  height: 30px;
+}
+.member_avatar_img {
+  width: 100%;
+  height: 100%;
+  border-radius: 99999px;
+  object-fit: cover;
+}
+
+.member_avatar_img:hover {
+  cursor: pointer;
+  filter: brightness(1.5);
+}
+
+.board_header_invite_btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

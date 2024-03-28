@@ -1,9 +1,16 @@
 .drawer_container {
   width: var(--drawer-width);
+  min-width: var(--drawer-width);
   color: #ffffff;
   background-color: var(--board-bg);
   height: calc(100vh - var(--header-height));
-  overflow-x: hidden;
+  border-right: 1px solid rgba(255, 255, 255, 0.4);
+  position: relative;
+}
+.drawer_container_background {
+  height: 100%;
+  backdrop-filter: blur(6px);
+  background-color: hsla(0, 0%, 0%, 0.16);
 }
 
 .drawer_header {

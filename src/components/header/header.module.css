@@ -6,8 +6,12 @@
   box-sizing: border-box;
   background-color: var(--board-bg);
   color: white;
+  overflow-y: hidden;
 }
-
+.header_container_overlay {
+  background-color: hsla(0, 0%, 0%, 0.16);
+  backdrop-filter: blur(6px);
+}
 .header {
   display: flex;
   align-items: center;

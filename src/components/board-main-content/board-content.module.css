@@ -1,0 +1,5 @@
+.board_main_content {
+  flex: 1 1 0%;
+  height: calc(100vh - var(--header-height));
+  background-color: var(--board-bg);
+}
