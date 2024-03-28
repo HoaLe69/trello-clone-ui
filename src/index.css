@@ -1,9 +1,15 @@
 :root {
   --header-height: 60px;
   --container-width: 1300px;
+  --drawer-width: 260px;
+  --board-bg: #0066ff;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 body {
-  margin: 0;
   font-family:
     SF Pro Display,
     SF Pro Icons,
@@ -12,6 +18,4 @@ body {
     Helvetica,
     Arial,
     sans-serif;
-  padding: 0;
-  box-sizing: border-box;
 }

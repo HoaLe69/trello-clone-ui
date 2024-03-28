@@ -1,0 +1,104 @@
+.drawer_container {
+  width: var(--drawer-width);
+  color: #ffffff;
+  background-color: var(--board-bg);
+  height: calc(100vh - var(--header-height));
+  overflow-x: hidden;
+}
+
+.drawer_header {
+  display: flex;
+  align-items: center;
+  padding: 12px 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+.drawer_header_logo {
+  color: white;
+  font-weight: 800;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  background: linear-gradient(#1f845a, #4bce97);
+}
+
+.drawer_header_link {
+  margin: 0 8px;
+  text-decoration: none;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.drawer_header_icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  padding: 0.5em;
+  cursor: pointer;
+  margin-left: auto;
+  color: white;
+}
+.drawer_header_icon:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+/*drawer body*/
+.drawer_body {
+  padding-top: 12px;
+}
+.drawer_body_link {
+  flex: 1;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  font-size: 14px;
+  text-decoration: none;
+  padding-left: 16px;
+}
+.drawer_body_wrap_link :hover {
+  background-color: hsla(0, 0%, 100%, 0.16);
+}
+.drawer_body_text {
+  margin-left: 12px;
+}
+
+.drawer_body_project {
+  display: flex;
+  align-items: center;
+  padding-left: 16px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.drawer_body_icon {
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+.drawer_body_icon__right {
+  padding: 4px;
+  margin: 0 6px;
+}
+.drawer_body_icon__right:hover {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.drawer_body_icon__display {
+  display: none;
+}
+
+.drawer_body_project_item {
+  display: flex;
+  align-items: center;
+}
+.drawer_body_project_item:hover {
+  background-color: hsla(0, 0%, 100%, 0.16);
+}
+.drawer_body_project_item:hover .drawer_body_icon__display {
+  display: flex;
+}
