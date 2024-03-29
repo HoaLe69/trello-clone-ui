@@ -1,8 +1,8 @@
 import React from 'react'
 import classNames from 'classnames/bind'
 import styles from './landding-page.module.css'
-import Logo from '../../components/shared/logo/logo'
-import Button from '../../components/shared/button/button'
+import Logo from '../../components/shared/logo'
+import Button from '../../components/shared/button'
 import introduceImg from '../../assets/image/introduce.webp'
 import bg from '../../assets/image/bg.svg'
 

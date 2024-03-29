@@ -1,11 +1,23 @@
 :root {
   --header-height: 60px;
   --container-width: 1300px;
+  --drawer-width: 260px;
+  --board-bg: #0079bf;
+  --board-header-background-color: #0000003d;
+  --text-dynamic: #ffffff;
+  --text-dynamic-board-canvas: #000000;
+  --dynamic-button-hovered: #a6c5e229;
+  --button-hovered-bg: #091e4224;
 }
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+.animation-color {
+  transition-property: background-color, border-color, box-shadow;
+  transition-duration: 85ms;
+  transition-timing-function: ease;
 }
 body {
   font-family:

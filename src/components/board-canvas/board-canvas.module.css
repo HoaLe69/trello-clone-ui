@@ -1,0 +1,18 @@
+.board_canvas {
+  color: var(--text-dynamic-board-canvas);
+  margin-top: 12px;
+  min-width: calc(100vw - var(--drawer-width));
+  overflow-x: auto;
+  overflow-y: hidden;
+  user-select: none;
+  flex-grow: 1;
+  scrollbar-color: #fff6 #00000026;
+  display: flex;
+}
+.board {
+  flex-grow: 1;
+  padding: 2px 6px 8px;
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+}
