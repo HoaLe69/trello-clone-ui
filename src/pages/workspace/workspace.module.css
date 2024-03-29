@@ -1,0 +1,179 @@
+.workspace_top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 124px;
+  max-width: 850px;
+  margin: auto;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+}
+
+.info_img {
+  width: 60px;
+  height: 60px;
+}
+
+.info_description {
+  padding: 8px;
+}
+
+.info_description_top {
+  display: flex;
+  flex-direction: row;
+}
+
+.info_name {
+  margin: 0;
+  font-size: 20px;
+  color: #333;
+  margin-right: 4px;
+}
+
+.info_edit {
+  width: 12px;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.info_edit:hover {
+  cursor: pointer;
+  background-color: #ccc;
+}
+
+.lock_icon {
+  width: 12px;
+  height: 12px;
+  margin-right: 4px;
+}
+
+.info_status {
+  margin: 0;
+  font-size: 12px;
+  color: #44546f;
+}
+
+.btn_invite {
+  height: 32px;
+  font-size: 14px;
+  border: none;
+  box-shadow: none;
+  padding: 8px;
+  border-radius: 4px;
+  background-color: #0c66e4;
+  color: #fff;
+}
+
+.btn_invite:hover {
+  cursor: pointer;
+  background-color: #0055cc;
+}
+
+.horizontal_rule {
+  width: 90%;
+  border-bottom: 1px solid #dcdfe4;
+  margin: auto;
+}
+
+.workspace_bottom {
+  max-width: 1266px;
+  padding: 32px;
+  margin: auto;
+}
+
+.board_header {
+  font-size: 20px;
+}
+
+.board_option {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.board_sort,
+.board_filter {
+  display: flex;
+  flex-direction: column;
+  margin-right: 8px;
+}
+
+.sort_title,
+.filter_title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #44546f;
+  margin-bottom: 8px;
+}
+
+.sort_select,
+.filter_select {
+  min-width: 200px;
+  height: 36px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid #dcdfe4;
+  color: #333;
+}
+
+.boards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.create_board {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 120px;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  margin: 0 16px 16px 0;
+}
+
+.create_board_title {
+  color: #333;
+  font-size: 14px;
+}
+
+.create_board:hover {
+  cursor: pointer;
+  background-color: #dcdcdc;
+}
+
+.board {
+  position: relative;
+  width: 300px;
+  height: 120px;
+  background-color: #f5f5f5;
+  margin: 0 16px 16px 0;
+  border-radius: 4px;
+}
+
+.board:hover {
+  cursor: pointer;
+  background-color: #dcdcdc;
+}
+
+.board_title {
+  position: absolute;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+  padding: 12px;
+  margin: 0;
+}
+
+.board_star {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 20px;
+  padding: 12px;
+}
