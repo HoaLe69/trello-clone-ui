@@ -6,11 +6,12 @@ import { IoPersonAddOutline } from 'react-icons/io5'
 
 const cx = classNames.bind(styles)
 
-const BoardHeader = () => {
+const BoardHeader = ({ board }) => {
+  const { title } = board
   return (
     <div className={cx('board_header')}>
       <div className={cx('board_header_inner')}>
-        <h2 className={cx('board_header_name')}>Trello Clone</h2>
+        <h2 className={cx('board_header_name')}>{title}</h2>
         <div className={cx('board_header_action')}>
           <button className={cx('board_header_filter_btn', 'animation-color')}>
             <span className={cx('icon')}>

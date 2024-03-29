@@ -26,6 +26,7 @@
   justify-items: center;
 }
 .board_header_filter_btn {
+  margin-right: 10px;
   line-height: 20px;
   padding: 6px;
   color: var(--text-dynamic);
