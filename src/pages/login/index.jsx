@@ -1,8 +1,8 @@
 import classNames from 'classnames/bind'
 import React from 'react'
 import styles from './loginPage.module.css'
-import Logo from '../../components/shared/logo/logo'
-import Button from '../../components/shared/button/button'
+import Logo from '../../components/shared/logo'
+import Button from '../../components/shared/button'
 
 const cx = classNames.bind(styles)
 
