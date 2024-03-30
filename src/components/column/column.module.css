@@ -19,7 +19,9 @@
   justify-content: center;
   max-height: 100%;
 }
-
+.column_sperate {
+  height: 8px;
+}
 .column_header {
   display: flex;
   align-items: center;

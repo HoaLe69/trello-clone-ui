@@ -1,23 +1,43 @@
-import React from 'react'
+import React, { useCallback, useState } from 'react'
 import classNames from 'classnames/bind'
 import styles from './drawer.module.css'
 import { BsChevronLeft, BsThreeDots } from 'react-icons/bs'
 import { HiOutlineViewBoards } from 'react-icons/hi'
 import { FiPlus } from 'react-icons/fi'
+import { FaChevronRight } from 'react-icons/fa'
 
 const cx = classNames.bind(styles)
 
 const Drawer = () => {
   const projects = ['Trello Clone', 'FaceBook', 'Instagram']
+  const [isSlideIn, setIsSlideIn] = useState(false)
+  const handleSlideInDrawer = useCallback(() => {
+    setIsSlideIn(true)
+  }, [])
+  const handleSlideOutDrawer = useCallback(() => {
+    setIsSlideIn(false)
+  }, [])
+  const translate3d = isSlideIn
+    ? 'translate3d(-100%,0,0)'
+    : 'translate3d(0%,0,0)'
   return (
-    <div className={cx('drawer_container')}>
-      <div className={cx('drawer_container_background')}>
+    <div
+      className={cx('drawer_container')}
+      style={{ width: `${isSlideIn ? '16px' : '260px'}` }}
+    >
+      <div
+        className={cx('drawer_container_background')}
+        style={{ transform: `${translate3d}` }}
+      >
         <div className={cx('drawer_header')}>
           <div className={cx('drawer_header_logo')}>M</div>
           <a href="/" className={cx('drawer_header_link')}>
             Margelo Workspace
           </a>
-          <span className={cx('drawer_header_icon')}>
+          <span
+            className={cx('drawer_header_icon')}
+            onClick={handleSlideInDrawer}
+          >
             <BsChevronLeft />
           </span>
         </div>
@@ -64,6 +84,16 @@ const Drawer = () => {
           </ul>
         </div>
       </div>
+      {isSlideIn && (
+        <button
+          onClick={handleSlideOutDrawer}
+          className={cx('drawer_button_show')}
+        >
+          <span className={cx('drawer_button_icon')}>
+            <FaChevronRight />
+          </span>
+        </button>
+      )}
     </div>
   )
 }
