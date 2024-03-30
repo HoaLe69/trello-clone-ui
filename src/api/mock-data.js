@@ -33,7 +33,7 @@ export const mockData = {
             title: 'Title of card 01',
             description: 'Markdown Syntax',
             cover:
-              'https://trungquandev.com/wp-content/uploads/2022/07/fair-mern-stack-advanced-banner-trungquandev.jpg',
+              'https://quantrinhahang.edu.vn/wp-content/uploads/2019/05/teamwork-la-gi.jpg',
             memberIds: ['test-user-id-01'],
             comments: ['test comment 01', 'test comment 02'],
             attachments: [
@@ -59,7 +59,8 @@ export const mockData = {
             columnId: 'column-id-01',
             title: 'Title of card 03',
             description: null,
-            cover: null,
+            cover:
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQv-59iLBYqKk8et9sL5nxZ46MwuZkBx7ErIO0xdMzjGQ&s',
             memberIds: [],
             comments: [],
             attachments: []
@@ -122,7 +123,8 @@ export const mockData = {
             columnId: 'column-id-02',
             title: 'Title of card 08',
             description: null,
-            cover: null,
+            cover:
+              'https://www.cybozu.vn/wp-content/uploads/2020/04/teamwork.jpg',
             memberIds: [],
             comments: [],
             attachments: []

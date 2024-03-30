@@ -1,16 +1,21 @@
 .drawer_container {
-  width: var(--drawer-width);
-  min-width: var(--drawer-width);
   color: #ffffff;
   background-color: var(--board-bg);
   height: calc(100vh - var(--header-height));
-  border-right: 1px solid rgba(255, 255, 255, 0.4);
   position: relative;
+  z-index: 5;
 }
 .drawer_container_background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
   height: 100%;
+  border-right: 1px solid rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(6px);
   background-color: hsla(0, 0%, 0%, 0.16);
+  width: 260px;
+  transition: transform 100ms ease-in;
 }
 
 .drawer_header {
@@ -108,4 +113,38 @@
 }
 .drawer_body_project_item:hover .drawer_body_icon__display {
   display: flex;
+}
+
+.drawer_button_show {
+  width: 100%;
+  background-color: hsla(0, 0%, 0%, 0.16);
+  position: absolute;
+  border: none;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+}
+.drawer_button_icon {
+  border: 1px solid hsla(0, 0%, 100%, 0.16);
+  background-color: hsla(0, 0%, 0%, 0.16);
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  padding: 6px;
+  border-radius: 9999999px;
+  margin: 15px 0 0 4px;
+  backdrop-filter: blur(16px);
+  top: 0;
+  position: absolute;
+}
+.drawer_button_show:hover .drawer_button_icon {
+  background-color: rgba(255, 255, 255, 0.3);
 }

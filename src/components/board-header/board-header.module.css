@@ -13,6 +13,7 @@
   font-size: 18px;
   color: var(--text-dynamic);
   line-height: 32px;
+  padding: 0 10px;
 }
 .board_header_action {
   margin-left: auto;
