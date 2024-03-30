@@ -15,7 +15,7 @@ export default function LanddingPage() {
         <div className={cx('header')}>
           <Logo href="/" />
           <div className={cx('btn-login')}>
-            <Button>Login</Button>
+            <Button href="/login">Login</Button>
           </div>
         </div>
       </div>

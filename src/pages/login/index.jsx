@@ -30,7 +30,7 @@ const LoginPage = () => {
             />
           </div>
           <div className="form_button">
-            <Button>Log in</Button>
+            <Button href="/workspace">Log in</Button>
           </div>
           <div>
             <a href="/" className={cx('form_link')}>
