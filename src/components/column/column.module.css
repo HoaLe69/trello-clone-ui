@@ -19,10 +19,10 @@
   justify-content: center;
   max-height: 100%;
 }
-<<<<<<< HEAD .column_sperate {
+.column_sperate {
   height: 8px;
 }
-=======>>>>>>>latest .column_header {
+.column_header {
   display: flex;
   align-items: center;
   padding: 8px 8px 0;
