@@ -107,17 +107,20 @@
   border: 2px solid #d5d9df;
   padding: 0 8px;
 }
+
 @media (max-width: 387px) {
   .board_search,
   .board_sort {
     width: 100%;
   }
 }
+
 .search_input_icon {
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .board_search_input {
   padding: 8px;
   border: none;

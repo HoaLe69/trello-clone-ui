@@ -31,8 +31,7 @@ const WorkSpace = () => {
           </div>
         </div>
         <button className={cx('btn_invite')}>
-          <LuPlus />
-          Invite member
+          <IoPersonAddOutline /> Invite Workspace members
         </button>
       </div>
       <div className={cx('horizontal_rule')}></div>
