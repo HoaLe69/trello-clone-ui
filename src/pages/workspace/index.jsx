@@ -7,8 +7,7 @@ import { FaPencilAlt } from 'react-icons/fa'
 import Header from '../../components/header'
 import { CiSearch } from 'react-icons/ci'
 import { Link } from 'react-router-dom'
-import { LuPlus } from 'react-icons/lu'
-
+import { IoPersonAddOutline } from "react-icons/io5";
 const cx = classNames.bind(style)
 
 const WorkSpace = () => {
