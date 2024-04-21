@@ -1,20 +1,20 @@
 import classNames from 'classnames/bind'
 import React from 'react'
-import styles from './loginPage.module.css'
+import styles from '../login/loginPage.module.css'
 import Logo from '../../components/shared/logo'
 import Button from '../../components/shared/button'
 import { Link } from 'react-router-dom'
 
 const cx = classNames.bind(styles)
 
-const LoginPage = () => {
+const Register = () => {
   return (
     <div className={cx('container')}>
       <form className={cx('form')}>
         <div className={cx('form_inner')}>
           <div className={cx('form_header')}>
             <Logo href="/" />
-            <span>Login in to continue</span>
+            <span>Welcome to Margelo</span>
           </div>
           <div className={cx('form_container_input')}>
             <input
@@ -29,17 +29,20 @@ const LoginPage = () => {
               name="password"
               placeholder="Enter your password"
             />
+            <input
+              type="password"
+              className={cx('form_input')}
+              name="retype_password"
+              placeholder="Retype your password"
+            />
           </div>
           <div className="form_button">
-            <Button href="/workspace">Log in</Button>
+            <Button href="/workspace">Register</Button>
           </div>
           <div>
-            <Link to="/register" href="/" className={cx('form_link')}>
-              Create an account
+            <Link to="/login" className={cx('form_link')}>
+              Already have account ? Login
             </Link>
-            {/* <a href="/" className={cx('form_link')}> */}
-            {/*   Forget password ? */}
-            {/* </a> */}
           </div>
         </div>
       </form>
@@ -47,4 +50,4 @@ const LoginPage = () => {
   )
 }
 
-export default LoginPage
+export default Register
