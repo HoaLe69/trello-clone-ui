@@ -5,17 +5,21 @@ import { Link } from 'react-router-dom'
 
 const cx = classNames.bind(style)
 
-const Button = ({ children, href }) => {
-  let ButtonContainer = Fragment
-  if (href) ButtonContainer = WrapButtonLink
+const Button = ({ children, href, ...props }) => {
   return (
     <ButtonContainer href={href}>
-      <button className={cx('btn')}>{children}</button>
+      <button className={cx('btn')} {...props}>
+        {children}
+      </button>
     </ButtonContainer>
   )
 }
 
 export default Button
-const WrapButtonLink = ({ children, href }) => {
-  return <Link to={href}>{children}</Link>
+const ButtonContainer = ({ children, href }) => {
+  return href ? (
+    <Link to={href}>{children}</Link>
+  ) : (
+    <Fragment>{children}</Fragment>
+  )
 }
