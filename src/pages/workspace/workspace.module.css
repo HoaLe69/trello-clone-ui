@@ -85,7 +85,6 @@
 
 .workspace_bottom {
   max-width: 1266px;
-  padding: 32px;
   margin: auto;
 }
 
@@ -153,7 +152,8 @@
 }
 
 .boards {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   flex-wrap: wrap;
   align-items: center;
   gap: 20px;
@@ -163,7 +163,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 300px;
   height: 120px;
   background-color: #f5f5f5;
   border-radius: 4px;
@@ -180,8 +179,6 @@
 }
 
 .board {
-  position: relative;
-  width: 300px;
   height: 120px;
   background-color: #f5f5f5;
   border-radius: 4px;
@@ -193,11 +190,26 @@
 }
 
 .board_title {
-  position: absolute;
+  display: inline-block;
+  margin-top: 16px;
   font-size: 16px;
   font-weight: 600;
   color: #333;
   margin-bottom: 8px;
   padding: 12px;
   margin: 0;
+}
+
+/* workspace main*/
+.workspace_main {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: center;
+}
+.workspace_boards {
+  max-width: 825px;
+  min-width: 288px;
+  width: 100%;
+  margin: 40px 16px 0;
 }

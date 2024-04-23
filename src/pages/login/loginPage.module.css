@@ -42,6 +42,13 @@
   padding: 10px;
   border: 1px solid rgb(211, 209, 209);
 }
+.form_error {
+  text-align: left;
+  color: red;
+  font-size: 12px;
+  display: block;
+  padding-left: 2px;
+}
 .form_link {
   color: rgb(0, 85, 204);
   text-decoration: none;

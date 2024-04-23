@@ -3,6 +3,7 @@
   height: var(--header-height);
   align-items: center;
   gap: 5px;
+  padding: 0 8px;
 }
 
 .image {

@@ -1,3 +1,3 @@
-const arrayMove = () => {}
-
-export default arrayMove
+export const cacheInLocalStorage = (key, value) => {
+  localStorage.setItem(key, JSON.stringify(value))
+}

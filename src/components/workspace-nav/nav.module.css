@@ -1,0 +1,12 @@
+.nav {
+  width: 256px;
+  max-height: 90vh;
+  margin: 40px 0 0;
+}
+.nav_main_title {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 16px;
+  padding: 8px 0;
+  color: #44546f;
+}

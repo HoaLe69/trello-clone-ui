@@ -5,26 +5,36 @@ import { path } from '../config/index'
 import BoardPage from '../pages/board'
 import LoginPage from '../pages/login'
 import Register from '../pages/register'
+import ProtectedRoute from '../components/protected-route'
 
 export const routesPublic = [
   {
     path: path.introduce,
-    component: <LanddingPage />
-  },
-  {
-    path: path.workspace,
-    component: <WorkSpace />
-  },
-  {
-    path: path.board,
-    component: <BoardPage />
+    element: <LanddingPage />
   },
   {
     path: path.login,
-    component: <LoginPage />
+    element: <LoginPage />
   },
   {
     path: path.register,
-    component: <Register />
+    element: <Register />
+  }
+]
+
+export const routesForAuthenticateOnly = [
+  {
+    path: '/',
+    element: <ProtectedRoute />,
+    children: [
+      {
+        path: path.workspace,
+        element: <WorkSpace />
+      },
+      {
+        path: path.board,
+        element: <BoardPage />
+      }
+    ]
   }
 ]

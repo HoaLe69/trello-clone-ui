@@ -5,8 +5,7 @@
   border-bottom-color: rgba(255, 255, 255, 0.4);
   box-sizing: border-box;
   background-color: var(--board-bg);
-  color: white;
-  overflow-y: hidden;
+  color: #ffffff;
 }
 .header_container_overlay {
   background-color: hsla(0, 0%, 0%, 0.16);
@@ -16,6 +15,26 @@
   display: flex;
   align-items: center;
   padding: 0 8px;
+}
+.header_buttons {
+  margin: 0 4px;
+}
+.header_button_wrap {
+  position: relative;
+}
+.header_create_btn {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0 12px;
+  border-radius: 3px;
+  height: 32px;
+  font-weight: 500;
+  outline: none;
+  border: none;
+  color: #ffffff;
+}
+.header_create_btn:hover {
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.3);
 }
 .user_profile {
   margin-left: auto;
