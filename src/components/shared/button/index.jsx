@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom'
 
 const cx = classNames.bind(style)
 
-const Button = ({ children, href, ...props }) => {
+const Button = ({ children, href, disable, ...props }) => {
   return (
     <ButtonContainer href={href}>
-      <button className={cx('btn')} {...props}>
+      <button className={cx('btn', { btn__disable: disable })} {...props}>
         {children}
       </button>
     </ButtonContainer>
