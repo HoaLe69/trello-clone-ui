@@ -2,6 +2,7 @@ import classNames from 'classnames/bind'
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { showCreatePopover } from '../../redux/popoverSlice'
+import CreateWorkspaceModal from '../modals/modal-create-workspace'
 import CreateMenuPopover from '../popover/header-create-menu-popover'
 import Logo from '../shared/logo'
 import styles from './header.module.css'
@@ -38,6 +39,7 @@ const Header = () => {
           </div>
         </div>
       </div>
+      <CreateWorkspaceModal />
     </header>
   )
 }

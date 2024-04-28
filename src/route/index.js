@@ -6,6 +6,7 @@ import BoardPage from '../pages/board'
 import LoginPage from '../pages/login'
 import Register from '../pages/register'
 import ProtectedRoute from '../components/protected-route'
+import WorkspaceDetail from '../pages/workspace-detail'
 
 export const routesPublic = [
   {
@@ -34,6 +35,10 @@ export const routesForAuthenticateOnly = [
       {
         path: path.board,
         element: <BoardPage />
+      },
+      {
+        path: path.workspaceDetail,
+        element: <WorkspaceDetail />
       }
     ]
   }

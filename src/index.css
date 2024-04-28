@@ -32,3 +32,11 @@ body {
     Arial,
     sans-serif;
 }
+hr {
+  background-color: #091e4224;
+  border: 0;
+  height: 1px;
+  margin: 16px 0;
+  padding: 0;
+  width: 100%;
+}

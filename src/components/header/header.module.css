@@ -9,7 +9,6 @@
 }
 .header_container_overlay {
   background-color: hsla(0, 0%, 0%, 0.16);
-  backdrop-filter: blur(6px);
 }
 .header {
   display: flex;
@@ -21,6 +20,7 @@
 }
 .header_button_wrap {
   position: relative;
+  z-index: 40;
 }
 .header_create_btn {
   background: rgba(255, 255, 255, 0.2);

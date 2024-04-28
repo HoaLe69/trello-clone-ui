@@ -4,13 +4,15 @@ import classNames from 'classnames/bind'
 import { RiTrelloFill } from 'react-icons/ri'
 import { BsPeople } from 'react-icons/bs'
 import Wrapper from './wrapper'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { selectorShowOrHide } from '../../redux/popoverSlice'
+import { showCreateModal } from '../../redux/modalSlice'
 
 const cx = classNames.bind(styles)
 
 const CreateMenuPopover = () => {
   const isOpen = useSelector(selectorShowOrHide)
+  const dispatch = useDispatch()
   return (
     <Wrapper isOpen={isOpen}>
       <li>
@@ -28,7 +30,10 @@ const CreateMenuPopover = () => {
         </button>
       </li>
       <li>
-        <button className={cx('nav_button')}>
+        <button
+          className={cx('nav_button')}
+          onClick={() => dispatch(showCreateModal())}
+        >
           <span className={cx('nav_button_title')}>
             <span className={cx('nav_button_icon')}>
               <BsPeople />

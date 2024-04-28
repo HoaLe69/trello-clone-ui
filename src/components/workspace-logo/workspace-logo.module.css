@@ -1,0 +1,22 @@
+.logo {
+  height: 24px;
+  width: 24px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.logo.medium {
+  height: 32px;
+  width: 32px;
+  font-size: 20px;
+}
+.logo.large {
+  width: 60px;
+  height: 60px;
+  font-size: 35px;
+}

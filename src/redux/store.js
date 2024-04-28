@@ -5,10 +5,14 @@ import { persistStore } from 'redux-persist'
 import persistReducer from 'redux-persist/es/persistReducer'
 import authReducer from './authSlice'
 import popoverReducer from './popoverSlice'
+import modalReducer from './modalSlice'
+import workspaceReducer from './workspaceSlice'
 
 const reducer = combineReducers({
   auth: authReducer,
-  popover: popoverReducer
+  popover: popoverReducer,
+  modal: modalReducer,
+  workspace: workspaceReducer
 })
 
 const persistConfig = {

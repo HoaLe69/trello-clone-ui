@@ -1,95 +1,13 @@
-.workspace_top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 124px;
-  max-width: 850px;
-  margin: auto;
-  padding: 0 10px;
-}
-
 .info {
   display: flex;
   align-items: center;
 }
 
-.info_img {
-  width: 60px;
-  height: 60px;
-}
-
-.info_description {
-  padding: 8px;
-}
-
-.info_description_top {
-  display: flex;
-  flex-direction: row;
-}
-
-.info_name {
-  margin: 0;
-  font-size: 20px;
-  color: #333;
-  margin-right: 4px;
-}
-
-.info_edit {
-  width: 12px;
-  padding: 4px;
-  border-radius: 4px;
-}
-
-.info_edit:hover {
-  cursor: pointer;
-  background-color: #ccc;
-}
-
-.lock_icon {
-  width: 12px;
-  height: 12px;
-  margin-right: 4px;
-}
-
-.info_status {
-  margin: 0;
-  font-size: 12px;
-  color: #44546f;
-}
-
-.btn_invite {
-  height: 32px;
-  font-size: 14px;
-  border: none;
-  box-shadow: none;
-  padding: 8px;
-  border-radius: 4px;
-  background-color: #0c66e4;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  cursor: pointer;
-}
-
-.btn_invite:hover {
-  cursor: pointer;
-  background-color: #0055cc;
-}
-
-.horizontal_rule {
-  width: 90%;
-  border-bottom: 1px solid #dcdfe4;
-  margin: auto;
-}
-
-.workspace_bottom {
-  max-width: 1266px;
-  margin: auto;
-}
-
-.board_header {
-  font-size: 20px;
+.workspace_boards_heading {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  white-space: nowrap;
 }
 
 .board_option {
