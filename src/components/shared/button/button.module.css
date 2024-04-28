@@ -19,7 +19,5 @@
   background-color: #091e4208;
   color: #091e424f;
   cursor: not-allowed;
-}
-.btn.btn__disable:hover {
-  cursor: not-allowed;
+  pointer-events: none;
 }

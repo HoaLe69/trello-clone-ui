@@ -24,24 +24,11 @@ const CreateWorkspaceModal = () => {
   const status = useSelector(state => state.workspace.status)
   const user = useSelector(state => state.auth.user)
 
-  const validate = values => {
-    const error = {}
-    const { title } = values
-    const fChar = title.charAt(0)
-    if (!title) {
-      error.title = 'Require'
-    } else if ((fChar < 'a' || fChar > 'z') && (fChar < 'A' || fChar > 'Z')) {
-      error.title = 'Title must start within a-z'
-    }
-    return error
-  }
-
   const formik = useFormik({
     initialValues: {
       title: '',
       description: ''
     },
-    validate,
     onSubmit: values => {
       const themeKey = values.title.charAt(0).toUpperCase()
       const theme = JSON.stringify(gradients[themeKey])
@@ -50,7 +37,6 @@ const CreateWorkspaceModal = () => {
         theme
       }
       if (!values.description) delete data.description
-      console.log(data)
       if (user.userId)
         dispatch(createWorkspace({ userId: user.userId, workspace: data }))
     }
@@ -62,6 +48,9 @@ const CreateWorkspaceModal = () => {
       dispatch(hideCreateModal())
     }
   }, [status, navigate, dispatch])
+  const charInRange = c => {
+    return !(c >= 'a' && c <= 'z') && !(c >= 'A' && c <= 'Z')
+  }
   return (
     <ModalOverlay isOpen={isOpen}>
       <div className={cx('create_modal_wrap')}>
@@ -76,6 +65,7 @@ const CreateWorkspaceModal = () => {
             </span>
             <label className={cx('form_label')}>Workspace name</label>
             <input
+              autoComplete="off"
               className={cx('form_input')}
               name="title"
               placeholder="Taco Co"
@@ -103,7 +93,10 @@ const CreateWorkspaceModal = () => {
               Get your member on board with a few words about your Workspace
             </span>
             <Button
-              disable={!(!!formik.errors.title || !!formik.values.title)}
+              disable={
+                !formik.values.title.trim() ||
+                charInRange(formik.values?.title.charAt(0))
+              }
               type="submit"
             >
               {status === 'loading' ? (

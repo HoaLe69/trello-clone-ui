@@ -5,7 +5,9 @@ import { showCreatePopover } from '../../redux/popoverSlice'
 import CreateWorkspaceModal from '../modals/modal-create-workspace'
 import CreateMenuPopover from '../popover/header-create-menu-popover'
 import Logo from '../shared/logo'
+import { IoChevronDownOutline } from 'react-icons/io5'
 import styles from './header.module.css'
+import StarredListPopover from '../popover/header-starred-popover'
 
 const cx = classNames.bind(styles)
 
@@ -16,6 +18,17 @@ const Header = () => {
       <div className={cx('header_container_overlay')}>
         <div className={cx('header')}>
           <Logo href="/" color="white" />
+          <div className={cx('header_buttons')}>
+            <div className={cx('header_button_wrap')}>
+              <button className={cx('header_create_btn', 'transparent')}>
+                Starred
+                <span className={cx('button_icon')}>
+                  <IoChevronDownOutline />
+                </span>
+              </button>
+              <StarredListPopover />
+            </div>
+          </div>
           <div className={cx('header_buttons')}>
             <div className={cx('header_button_wrap')}>
               <button

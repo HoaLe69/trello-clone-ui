@@ -18,7 +18,6 @@ const WorkspaceTop = () => {
       if (curr) setCurrentWorkspace(curr)
     }
   }, [id, workspaces])
-  console.log(currentWorkspace)
   return (
     <div className={cx('workspace_top')}>
       <div className={cx('workspace_top_logo')}>
