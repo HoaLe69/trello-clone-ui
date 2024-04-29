@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useLayoutEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Outlet, useNavigate } from 'react-router'
 import { axiosPrivate } from '../config/axios'
@@ -6,7 +6,7 @@ import { axiosPrivate } from '../config/axios'
 const ProtectedRoute = () => {
   const navigate = useNavigate()
   const token = useSelector(state => state.auth.token)
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (token) {
       axiosPrivate.defaults.headers.common['Authorization'] = `Bearer ${token}`
     } else {
@@ -14,7 +14,6 @@ const ProtectedRoute = () => {
       delete axiosPrivate.defaults.headers.common['Authorization']
     }
   }, [token, navigate])
-
   return <Outlet />
 }
 

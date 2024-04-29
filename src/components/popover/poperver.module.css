@@ -13,6 +13,10 @@
     0px 0px 1px #091e424f;
   width: 304px;
 }
+.header_create_menu_popover.right {
+  top: 0;
+  left: 105%;
+}
 .wrapper {
   padding: 12px;
 }

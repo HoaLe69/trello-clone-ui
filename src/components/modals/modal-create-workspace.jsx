@@ -49,7 +49,9 @@ const CreateWorkspaceModal = () => {
     }
   }, [status, navigate, dispatch])
   const charInRange = c => {
-    return !(c >= 'a' && c <= 'z') && !(c >= 'A' && c <= 'Z')
+    const code = c.charCodeAt(0)
+    if ((code >= 65 && code <= 90) || (code >= 97 && code <= 122)) return false
+    return true
   }
   return (
     <ModalOverlay isOpen={isOpen}>
@@ -95,7 +97,7 @@ const CreateWorkspaceModal = () => {
             <Button
               disable={
                 !formik.values.title.trim() ||
-                charInRange(formik.values?.title.charAt(0))
+                charInRange(formik.values.title.charAt(0))
               }
               type="submit"
             >

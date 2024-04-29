@@ -7,12 +7,14 @@ import authReducer from './authSlice'
 import popoverReducer from './popoverSlice'
 import modalReducer from './modalSlice'
 import workspaceReducer from './workspaceSlice'
+import boardReducer from './boardSlice'
 
 const reducer = combineReducers({
   auth: authReducer,
   popover: popoverReducer,
   modal: modalReducer,
-  workspace: workspaceReducer
+  workspace: workspaceReducer,
+  board: boardReducer
 })
 
 const persistConfig = {

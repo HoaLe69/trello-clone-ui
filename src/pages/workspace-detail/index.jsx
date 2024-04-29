@@ -1,14 +1,30 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from '../workspace/workspace.module.css'
 import classNames from 'classnames/bind'
 import Header from '../../components/header'
 import WorkspaceTop from '../../components/workspace-top'
 import NavWorkspace from '../../components/workspace-nav'
 import { CiSearch } from 'react-icons/ci'
+import CreateBoardPopover from '../../components/popover/create-board-popover'
+import { useDispatch, useSelector } from 'react-redux'
+import { showCreateBoardPopover } from '../../redux/popoverSlice'
+import { Link, useParams } from 'react-router-dom'
+import { fetchListBoard } from '../../redux/api-client/board'
+import { transformString } from '../../utils'
+import { FaRegStar } from 'react-icons/fa'
+import { FaStar } from 'react-icons/fa6'
 
 const cx = classNames.bind(styles)
 
 const WorkspaceDetail = () => {
+  const dispatch = useDispatch()
+  const { id } = useParams()
+  useEffect(() => {
+    if (id) {
+      dispatch(fetchListBoard(id))
+    }
+  }, [id, dispatch])
+  const boards = useSelector(state => state.board.fetchList.list)
   return (
     <div className={cx('container')}>
       <Header />
@@ -44,20 +60,25 @@ const WorkspaceDetail = () => {
               </div>
             </div>
             <div className={cx('boards')}>
-              <div className={cx('create_board')}>
+              <div
+                onClick={() => dispatch(showCreateBoardPopover())}
+                className={cx('create_board')}
+              >
                 <span className={cx('create_board_title')}>
                   Create new board
                 </span>
+                <CreateBoardPopover isOpen />
               </div>
-              {/* {boards.map((board, index) => { */}
-              {/*   return ( */}
-              {/*     <BoardProject */}
-              {/*       key={board} */}
-              {/*       name={board} */}
-              {/*       href={`/b/${index}/${board}`} */}
-              {/*     /> */}
-              {/*   ) */}
-              {/* })} */}
+              {boards.map(board => {
+                return (
+                  <BoardProject
+                    key={board.boardId}
+                    background={board.background}
+                    name={board.title}
+                    href={`/b/${board.boardId}/${transformString(board.title)}`}
+                  />
+                )
+              })}
             </div>
           </div>
         </div>
@@ -67,3 +88,23 @@ const WorkspaceDetail = () => {
 }
 
 export default WorkspaceDetail
+
+const BoardProject = ({ href, name, background }) => {
+  return (
+    <Link
+      style={{ backgroundColor: background }}
+      className={cx('board_tile')}
+      to={href}
+    >
+      <span className={cx('board_tile_fade')} />
+      <div className={cx('board_tile_detail')}>
+        <div className={cx('board_tile_detail_name')}>{name}</div>
+        <div className={cx('board_tile_detail_sub_container')}>
+          <span className={cx('board_tile_detail_option')}>
+            <FaRegStar />
+          </span>
+        </div>
+      </div>
+    </Link>
+  )
+}

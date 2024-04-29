@@ -1,31 +1,15 @@
 import Wrapper from '../wrapper'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Button from '../../shared/button'
 import classNames from 'classnames/bind'
 import styles from './create-board-popover.module.css'
 import { IoMdCheckmark } from 'react-icons/io'
+import { useDispatch, useSelector } from 'react-redux'
+import { colorForm, transformString } from '../../../utils'
+import { createBoard } from '../../../redux/api-client/board'
+import { useNavigate } from 'react-router-dom'
 
 const cx = classNames.bind(styles)
-
-const colorForm = [
-  '#0079BF',
-  '#D29034',
-  '#519839',
-  '#b04632',
-  '#89609e',
-  '#cd5a91',
-  '#4bbf6b',
-  '#00aecc',
-  '#838c91',
-  '#FFC83D'
-]
-
-const workSpaceValue = [
-  'workspace 1',
-  'workspace 2',
-  'workspace 3',
-  'workspace 4'
-]
 
 const ColorButton = ({ color, onClick, selected }) => {
   return (
@@ -54,37 +38,43 @@ const ColorButton = ({ color, onClick, selected }) => {
   )
 }
 
-const CreateBoardPopover = ({ isOpen }) => {
+const CreateBoardPopover = () => {
   const [input, setInput] = useState('')
   const [selectOption, setSelectOption] = useState('')
-  const [color, setColor] = useState('')
-  const [selectedColorIndex, setSelectedColorIndex] = useState(null)
+  const [colorPicked, setColorPicked] = useState('')
+  const dispatch = useDispatch()
+  const status = useSelector(state => state.board.create.status)
+  const board = useSelector(state => state.board.create.board)
+  const navigate = useNavigate()
 
   const handleSubmit = e => {
     e.preventDefault()
-    console.log({
+    const boardData = {
       title: input,
-      workspace: selectOption,
-      background: color
-    })
+      workSpaceId: selectOption,
+      background: colorPicked
+    }
+    dispatch(createBoard(boardData))
   }
-
+  useEffect(() => {
+    if (status === 'succeeded')
+      navigate(`/b/${board.boardId}/${transformString(board.title)}`)
+  }, [status, board.boardId, navigate, board.title])
+  const isOpen = useSelector(state => state.popover.isShowCreateBoardPopover)
+  const workspaces = useSelector(state => state.workspace.list)
   return (
-    <Wrapper isOpen={isOpen}>
+    <Wrapper isOpen={isOpen} direction="right" type="board">
       <form className={cx('form')} onSubmit={handleSubmit}>
         <span style={{ fontWeight: 'bold', color: 'GrayText' }}>
           Background
         </span>
         <div className={cx('color-row')}>
-          {colorForm.map((color, index) => (
+          {colorForm.map(color => (
             <ColorButton
-              onClick={() => {
-                setSelectedColorIndex(index)
-                setColor(color)
-              }}
-              key={index}
+              onClick={() => setColorPicked(color)}
+              key={color}
               color={color}
-              selected={selectedColorIndex === index}
+              selected={colorPicked === color}
             />
           ))}
         </div>
@@ -106,45 +96,18 @@ const CreateBoardPopover = ({ isOpen }) => {
           onChange={e => setSelectOption(e.target.value)}
           className={cx('form-input-header')}
         >
-          {workSpaceValue.map((value, index) => (
-            <option key={index} value={value}>
-              {value}
+          {workspaces.map(workspace => (
+            <option key={workspace.workSpaceId} value={workspace.workSpaceId}>
+              {workspace.title}
             </option>
           ))}
         </select>
-        <Button disable={!input.trim().length > 0}>Create</Button>
+        <Button disable={!input.trim().length > 0 || status === 'loading'}>
+          Create
+        </Button>
       </form>
     </Wrapper>
   )
 }
 
 export default CreateBoardPopover
-
-/* 
-  A: ['#0747a6', '#008da6'],
-  B: ['#006644', '#00875a'],
-  C: ['#403294', '#0747a6'],
-  D: ['#b22865', '#cd5a91'],
-  E: ['#cc4223', '#cb7d25'],
-  F: ['#0747a6', '#008da6'],
-  G: ['#006644', '#00875a'],
-  H: ['#403294', '#0747a6'],
-  I: ['#b22865', '#cd5a91'],
-  J: ['#cc4223', '#cb7d25'],
-  K: ['#0747a6', '#008da6'],
-  L: ['#006644', '#00875a'],
-  M: ['#403294', '#0747a6'],
-  N: ['#b22865', '#cd5a91'],
-  O: ['#cc4223', '#cb7d25'],
-  P: ['#0747a6', '#008da6'],
-  Q: ['#006644', '#00875a'],
-  R: ['#403294', '#0747a6'],
-  S: ['#b22865', '#cd5a91'],
-  T: ['#cc4223', '#cb7d25'],
-  U: ['#0747a6', '#008da6'],
-  V: ['#006644', '#00875a'],
-  W: ['#403294', '#0747a6'],
-  X: ['#b22865', '#cd5a91'],
-  Y: ['#cc4223', '#cb7d25'],
-  Z: ['#0747a6', '#008da6']
-*/

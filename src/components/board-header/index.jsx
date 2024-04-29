@@ -6,8 +6,7 @@ import { IoPersonAddOutline } from 'react-icons/io5'
 
 const cx = classNames.bind(styles)
 
-const BoardHeader = ({ board }) => {
-  const { title } = board
+const BoardHeader = ({ title }) => {
   return (
     <div className={cx('board_header')}>
       <div className={cx('board_header_inner')}>

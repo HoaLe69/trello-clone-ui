@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  isShowCreatePopover: false
+  isShowCreatePopover: false,
+  isShowCreateBoardPopover: false
 }
 
 export const popoverSlice = createSlice({
@@ -13,11 +14,27 @@ export const popoverSlice = createSlice({
     },
     hideCreatePopover(state) {
       state.isShowCreatePopover = false
+    },
+    showCreateBoardPopover(state) {
+      state.isShowCreateBoardPopover = true
+    },
+    hideCreateBoardPopover(state) {
+      state.isShowCreateBoardPopover = false
+    },
+    hideAllPopover(state) {
+      state.isShowCreateBoardPopover = false
+      state.isShowCreatePopover = false
     }
   }
 })
 
-export const { showCreatePopover, hideCreatePopover } = popoverSlice.actions
+export const {
+  showCreateBoardPopover,
+  hideCreateBoardPopover,
+  showCreatePopover,
+  hideCreatePopover,
+  hideAllPopover
+} = popoverSlice.actions
 export default popoverSlice.reducer
 
 const selectorShowOrHide = state => state.popover.isShowCreatePopover
