@@ -21,6 +21,7 @@ const WorkspaceDetail = () => {
   const { id } = useParams()
   useEffect(() => {
     if (id) {
+      localStorage.setItem('current-workspace', id)
       dispatch(fetchListBoard(id))
     }
   }, [id, dispatch])

@@ -61,7 +61,7 @@ const CreateBoardPopover = () => {
       navigate(`/b/${board.boardId}/${transformString(board.title)}`)
   }, [status, board.boardId, navigate, board.title])
   const isOpen = useSelector(state => state.popover.isShowCreateBoardPopover)
-  const workspaces = useSelector(state => state.workspace.list)
+  const workspaces = useSelector(state => state.workspace.fetchList.list)
   return (
     <Wrapper isOpen={isOpen} direction="right" type="board">
       <form className={cx('form')} onSubmit={handleSubmit}>

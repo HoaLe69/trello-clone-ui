@@ -10,7 +10,7 @@ const initialState = {
     status: 'idle',
     board: {}
   },
-  fetch: {
+  detail: {
     status: 'idle',
     board: {}
   },
@@ -43,22 +43,22 @@ export const boardSlice = createSlice({
       })
       // fetch detail
       .addCase(fetchDetailBoard.pending, state => {
-        state.fetch.status = 'loading'
+        state.detail.status = 'loading'
       })
       .addCase(fetchDetailBoard.fulfilled, (state, action) => {
-        state.fetch.status = 'succeeded'
+        state.detail.status = 'succeeded'
         const { data } = action.payload
-        state.fetch.board = data
+        state.detail.board = data
       })
       .addCase(fetchDetailBoard.rejected, state => {
-        state.fetch.status = 'failure'
+        state.detail.status = 'failure'
       })
       //list
       .addCase(fetchListBoard.pending, state => {
         state.fetchList.status = 'loading'
       })
       .addCase(fetchListBoard.fulfilled, (state, action) => {
-        state.fetch.status = 'succeeded'
+        state.fetchList.status = 'succeeded'
         const { data } = action.payload
         state.fetchList.list = data
       })

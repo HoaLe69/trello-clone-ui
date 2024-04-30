@@ -10,7 +10,7 @@ const cx = classNames.bind(styles)
 
 const NavWorkspace = () => {
   const user = useSelector(state => state.auth.user)
-  const workspaces = useSelector(state => state.workspace.list)
+  const workspaces = useSelector(state => state.workspace.fetchList.list)
   const dispatch = useDispatch()
   const { userId } = user
   useEffect(() => {

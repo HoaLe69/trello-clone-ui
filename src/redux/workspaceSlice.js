@@ -1,11 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { createWorkspace, fetchListWorkspaceUser } from './api-client/workspace'
+import {
+  createWorkspace,
+  fetchListWorkspaceUser,
+  fetchWorkspaceDetail
+} from './api-client/workspace'
 
 const initialState = {
-  workspace: {},
-  list: [],
-  status: 'idle',
-  listStatus: 'idle'
+  create: {
+    status: 'idle',
+    workspace: {}
+  },
+  fetchList: {
+    list: [],
+    status: 'idle'
+  },
+  detail: {
+    workspace: [],
+    status: 'idle'
+  }
 }
 
 export const workspaceSlice = createSlice({
@@ -18,27 +30,41 @@ export const workspaceSlice = createSlice({
   },
   extraReducers: builder => {
     builder
+      //create
       .addCase(createWorkspace.pending, state => {
-        state.status = 'loading'
+        state.create.status = 'loading'
       })
       .addCase(createWorkspace.fulfilled, (state, action) => {
-        state.status = 'succeeded'
+        state.create.status = 'succeeded'
         const { data } = action.payload
-        state.workspace = data
+        state.create.workspace = data
       })
       .addCase(createWorkspace.rejected, state => {
-        state.status = 'failure'
+        state.create.status = 'failure'
       })
+      //fetchlist
       .addCase(fetchListWorkspaceUser.pending, state => {
-        state.listStatus = 'loading'
+        state.fetchList.listStatus = 'loading'
       })
       .addCase(fetchListWorkspaceUser.fulfilled, (state, action) => {
-        state.listStatus = 'succeeded'
+        state.fetchList.listStatus = 'succeeded'
         const { data } = action.payload
-        state.list = data
+        state.fetchList.list = data
       })
       .addCase(fetchListWorkspaceUser.rejected, state => {
-        state.listStatus = 'failure'
+        state.fetchList.listStatus = 'failure'
+      })
+      //detail
+      .addCase(fetchWorkspaceDetail.pending, state => {
+        state.detail.status = 'loading'
+      })
+      .addCase(fetchWorkspaceDetail.fulfilled, (state, action) => {
+        state.detail.status = 'succeeded'
+        const { data } = action.payload
+        state.detail.workspace = data
+      })
+      .addCase(fetchWorkspaceDetail.rejected, state => {
+        state.detail.status = 'failure'
       })
   }
 })

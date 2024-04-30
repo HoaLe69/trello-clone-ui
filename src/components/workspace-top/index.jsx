@@ -10,7 +10,7 @@ const cx = classNames.bind(styles)
 
 const WorkspaceTop = () => {
   const [currentWorkspace, setCurrentWorkspace] = useState()
-  const workspaces = useSelector(state => state.workspace.list)
+  const workspaces = useSelector(state => state.workspace.fetchList.list)
   const { id } = useParams()
   useEffect(() => {
     if (id) {

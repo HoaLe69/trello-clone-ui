@@ -7,8 +7,8 @@ import Card from '../card'
 
 const cx = classNames.bind(styles)
 
-const Column = ({ column }) => {
-  const { _id, title, cardOrderIds, cards } = column
+const Column = props => {
+  const { title } = props.column
   return (
     <li className={cx('column')}>
       <div className={cx('column_inner')}>
@@ -20,11 +20,10 @@ const Column = ({ column }) => {
             <BsThreeDots />
           </button>
         </div>
-        <div className={cx('column_sperate')}></div>
         <ol className={cx('column_card_list')}>
-          {cards.map(card => {
-            return <Card key={card._id} card={card} />
-          })}
+          {/* {cards.map(card => { */}
+          {/*   return <Card key={card._id} card={card} /> */}
+          {/* })} */}
         </ol>
         <div>
           <AddCardButton />

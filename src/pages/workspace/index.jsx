@@ -2,7 +2,6 @@ import React from 'react'
 import classNames from 'classnames/bind'
 import style from './workspace.module.css'
 import Header from '../../components/header'
-import { CiSearch } from 'react-icons/ci'
 import { Link } from 'react-router-dom'
 import NavWorkspace from '../../components/workspace-nav'
 const cx = classNames.bind(style)

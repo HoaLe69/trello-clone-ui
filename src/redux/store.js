@@ -8,13 +8,15 @@ import popoverReducer from './popoverSlice'
 import modalReducer from './modalSlice'
 import workspaceReducer from './workspaceSlice'
 import boardReducer from './boardSlice'
+import listReducer from './listSlice'
 
 const reducer = combineReducers({
   auth: authReducer,
   popover: popoverReducer,
   modal: modalReducer,
   workspace: workspaceReducer,
-  board: boardReducer
+  board: boardReducer,
+  list: listReducer
 })
 
 const persistConfig = {

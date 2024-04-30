@@ -5,7 +5,6 @@ export const createBoard = createAsyncThunk('board/create', async board => {
   try {
     await new Promise(resolver => setTimeout(resolver, 3000))
     const response = await axiosPrivate.post('/board', board)
-    console.log(response.data)
     return response.data
   } catch (e) {
     console.log(e)

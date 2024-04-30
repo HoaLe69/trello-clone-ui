@@ -114,7 +114,12 @@
 .drawer_body_project_item:hover .drawer_body_icon__display {
   display: flex;
 }
-
+.drawer_loading {
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .drawer_button_show {
   width: 100%;
   background-color: hsla(0, 0%, 0%, 0.16);

@@ -21,7 +21,7 @@ const CreateWorkspaceModal = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const isOpen = useSelector(selectorShowOrHideModalWorkspace)
-  const status = useSelector(state => state.workspace.status)
+  const status = useSelector(state => state.workspace.create.status)
   const user = useSelector(state => state.auth.user)
 
   const formik = useFormik({

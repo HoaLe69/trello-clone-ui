@@ -3,7 +3,6 @@ import React, { useEffect } from 'react'
 import styles from './board-content.module.css'
 import classNames from 'classnames/bind'
 import BoardCanvas from '../board-canvas'
-import { mockData } from '../../api/mock-data'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { fetchDetailBoard } from '../../redux/api-client/board'
@@ -11,7 +10,7 @@ import { fetchDetailBoard } from '../../redux/api-client/board'
 const cx = classNames.bind(styles)
 
 const BoardMainContent = () => {
-  const { board } = mockData
+  // const { board } = mockData
   const dispatch = useDispatch()
   const { id } = useParams()
   useEffect(() => {
@@ -19,12 +18,18 @@ const BoardMainContent = () => {
       dispatch(fetchDetailBoard(id))
     }
   }, [id, dispatch])
-  const boar = useSelector(state => state.board.fetch.board)
-  console.log(boar)
+  const board = useSelector(state => state.board.detail.board)
+  const status = useSelector(state => state.board.detail.status)
   return (
     <div className={cx('board_main_content')}>
-      <BoardHeader title={boar?.title} />
-      <BoardCanvas board={board} />
+      {status === 'loading' || status === 'idle' ? (
+        <div>loading...</div>
+      ) : (
+        <>
+          <BoardHeader title={board.title} />
+          <BoardCanvas columns={board.columns} />
+        </>
+      )}
     </div>
   )
 }

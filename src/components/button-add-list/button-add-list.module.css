@@ -1,0 +1,84 @@
+.button_container {
+  width: 272px;
+}
+.common {
+  width: 100%;
+  border-radius: 12px;
+}
+.button_switch {
+  display: flex;
+  justify-content: flex-start;
+  padding: 12px;
+  background-color: #ffffff3d;
+  font-size: 14px;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 500;
+  text-decoration: none;
+  outline: none;
+  border: none;
+  color: #ffffff;
+}
+
+.button_icon {
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.button_switch:hover {
+  background-color: #a6c5e229;
+}
+.form {
+  padding: 11px;
+  background-color: #f1f2f4;
+  box-shadow:
+    0px 1px 1px #091e4240,
+    0px 0px 1px #091e424f;
+}
+.form_input {
+  height: 32px;
+  border-radius: 4px;
+  color: #172b4d;
+  font-weight: 600;
+  font-size: 14px;
+  max-height: 256px;
+  min-height: 20px;
+  resize: none;
+  padding: 6px 12px;
+  width: 100%;
+  border: none;
+  overflow-wrap: break-word;
+}
+.form_buttons {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+}
+
+.button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+}
+.button_submit {
+  padding: 6px 12px;
+  background-color: #0c66e4;
+  font-weight: 500;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.button_submit:hover {
+  background-color: #0055cc;
+}
+.button_cancel {
+  padding: 6px;
+  font-size: 18px;
+}

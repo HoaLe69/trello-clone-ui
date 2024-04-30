@@ -33,3 +33,18 @@ export const fetchListWorkspaceUser = createAsyncThunk(
     }
   }
 )
+
+export const fetchWorkspaceDetail = createAsyncThunk(
+  'workspace/detail',
+  async workspaceId => {
+    try {
+      // await new Promise(resolver => setTimeout(resolver, 10000))
+      const response = await axiosPrivate.get(
+        `/workspace/${workspaceId}/detail`
+      )
+      return response.data
+    } catch (e) {
+      console.log(e)
+    }
+  }
+)
