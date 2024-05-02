@@ -29,6 +29,26 @@
 }
 .column_header_wrap_name {
   flex: 1;
+  position: relative;
+}
+.column_edit_name {
+  position: static;
+  resize: none;
+  height: 32px;
+  border: none;
+  padding: 6px 8px 6px 12px;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+  z-index: -1;
+  box-shadow: none;
+  box-sizing: border-box;
+  background: transparent;
+  overflow-wrap: break-word;
+}
+.column_edit_name:focus {
+  box-shadow: inset 0 0 0 2px #388bff;
+  background-color: #ffffff;
 }
 .column_header_name {
   display: block;

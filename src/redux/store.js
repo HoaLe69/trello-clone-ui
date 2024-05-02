@@ -9,6 +9,7 @@ import modalReducer from './modalSlice'
 import workspaceReducer from './workspaceSlice'
 import boardReducer from './boardSlice'
 import listReducer from './listSlice'
+import cardReducer from './cardSlice'
 
 const reducer = combineReducers({
   auth: authReducer,
@@ -16,7 +17,8 @@ const reducer = combineReducers({
   modal: modalReducer,
   workspace: workspaceReducer,
   board: boardReducer,
-  list: listReducer
+  list: listReducer,
+  card: cardReducer
 })
 
 const persistConfig = {

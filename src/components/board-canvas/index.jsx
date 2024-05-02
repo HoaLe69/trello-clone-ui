@@ -14,7 +14,7 @@ const BoardCanvas = props => {
     <div className={cx('board_canvas')}>
       <ol id="board" className={cx('board')}>
         {columns.map(col => {
-          return <Column column={col} key={col._id} />
+          return <Column column={col} key={col.columnId} />
         })}
         {newCol.title && <Column column={newCol} />}
         <ButtonAddList />

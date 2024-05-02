@@ -26,6 +26,8 @@ const ButtonAddList = () => {
     e.preventDefault()
     if (textarea.trim().length > 0) {
       dispatch(createList({ title: textarea, boardId: id }))
+      setShowForm(false)
+      setTextarea('')
     }
   }
   return (

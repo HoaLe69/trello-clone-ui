@@ -9,3 +9,14 @@ export const createList = createAsyncThunk('list/create', async data => {
     console.log(e)
   }
 })
+
+export const updateTitle = async (listId, title) => {
+  try {
+    const response = await axiosPrivate.patch(`/column/${listId}`, null, {
+      params: { title }
+    })
+    return response
+  } catch (e) {
+    console.log(e)
+  }
+}

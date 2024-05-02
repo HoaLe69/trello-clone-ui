@@ -21,16 +21,16 @@
   transition-timing-function: ease;
 }
 body {
-  /* font-family: 'M PLUS 1', sans-serif; */
-  /* font-optical-sizing: auto; */
-  font-family:
-    SF Pro Display,
-    SF Pro Icons,
-    Helvetica,
-    Neue,
-    Helvetica,
-    Arial,
-    sans-serif;
+  font-family: 'M PLUS 1', sans-serif;
+  font-optical-sizing: auto;
+  /* font-family: */
+  /*   SF Pro Display, */
+  /*   SF Pro Icons, */
+  /*   Helvetica, */
+  /*   Neue, */
+  /*   Helvetica, */
+  /*   Arial, */
+  /*   sans-serif; */
 }
 hr {
   background-color: #091e4224;
@@ -49,4 +49,7 @@ textarea {
     Helvetica,
     Arial,
     sans-serif;
+  transition-duration: 85ms;
+  transition-property: background-color, border-color, box-shadow;
+  transition-timing-function: ease;
 }
