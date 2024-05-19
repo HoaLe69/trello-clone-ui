@@ -8,17 +8,21 @@ import { fetchListCards } from '../../redux/api-client/card'
 import { updateTitle } from '../../redux/api-client/list'
 import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
-import { SortableContext } from '@dnd-kit/sortable'
+import { SortableContext, defaultAnimateLayoutChanges } from '@dnd-kit/sortable'
+import { mapOrder } from '../../utils'
 
 const cx = classNames.bind(styles)
 
-const Column = ({ column, containers, setContainers, noEffect }) => {
+const Column = ({ column, containers, setContainers, noEffect, orderCardIds }) => {
   const [newCard, setNewCard] = useState({})
   const { title, columnId } = column
   const [editMode, setEditMode] = useState(false)
   const [textarea, setTextarea] = useState(title)
   const refInput = useRef(null)
   const preTitle = useRef(title)
+
+  const animateLayoutChanges = (args) =>
+    defaultAnimateLayoutChanges({ ...args, wasDragging: true });
   const {
     attributes,
     setNodeRef,
@@ -30,7 +34,8 @@ const Column = ({ column, containers, setContainers, noEffect }) => {
     id: columnId,
     data: {
       type: 'list'
-    }
+    },
+    animateLayoutChanges
   })
   const findListById = () => {
     return containers.find(container => container.columnId === columnId)
@@ -42,6 +47,9 @@ const Column = ({ column, containers, setContainers, noEffect }) => {
         const container = findListById()
         if (!container) return
         container.cards = [...res.data]
+        if (orderCardIds) {
+          container.cards = mapOrder(container.cards, JSON.parse(orderCardIds), 'cardId')
+        }
         setContainers([...containers])
       }
     }

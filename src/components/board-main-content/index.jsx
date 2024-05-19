@@ -1,5 +1,5 @@
 import BoardHeader from '../board-header'
-import React, { useEffect } from 'react'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
 import styles from './board-content.module.css'
 import classNames from 'classnames/bind'
 import BoardCanvas from '../board-canvas'
@@ -11,6 +11,7 @@ const cx = classNames.bind(styles)
 
 const BoardMainContent = () => {
   // const { board } = mockData
+  const [list, setList] = useState([])
   const dispatch = useDispatch()
   const { id } = useParams()
   useEffect(() => {
@@ -26,6 +27,7 @@ const BoardMainContent = () => {
       root.style.setProperty('--board-bg', board.background)
     }
   }, [board])
+
   return (
     <div className={cx('board_main_content')}>
       {status === 'loading' || status === 'idle' ? (
@@ -33,7 +35,10 @@ const BoardMainContent = () => {
       ) : (
         <>
           <BoardHeader title={board.title} />
-          <BoardCanvas columns={board.columns} />
+          <BoardCanvas
+            orderColumn={board.orderColumnIds}
+            columns={board.columns}
+          />
         </>
       )}
     </div>

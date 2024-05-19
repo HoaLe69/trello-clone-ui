@@ -25,10 +25,10 @@ const Header = () => {
     onOutsideClick: close,
     onDiappear: close,
     overflowContainer: false,
-    placement: "bottom-end",
+    placement: 'bottom-end',
     triggerOffset: 12,
     containerOffset: 16,
-    arrowOffset: 16,
+    arrowOffset: 16
   })
   return (
     <header className={cx('header_container')}>
@@ -58,24 +58,32 @@ const Header = () => {
             </div>
           </div>
           <>
-            <div {...triggerProps} onClick={() => setOpen(!isOpen)} className={cx('user_profile')}>
-              <UserAvatar small thumbail="#5142aa" displayName={userLogin?.email} />
-              <span className={cx('user_profile_name')}>{userLogin?.email}</span>
+            <div
+              {...triggerProps}
+              onClick={() => setOpen(!isOpen)}
+              className={cx('user_profile')}
+            >
+              <UserAvatar
+                small
+                thumbail="#5142aa"
+                displayName={userLogin?.email}
+              />
+              <span className={cx('user_profile_name')}>
+                {userLogin?.email}
+              </span>
             </div>
-            {
-              renderLayer(
-                isOpen && (
-                  <div {...layerProps} className={cx("profile_menu")}>
-                    <button className={cx("profile_menu_btn")}>Log out</button>
-                  </div>
-                )
+            {renderLayer(
+              isOpen && (
+                <div {...layerProps} className={cx('profile_menu')}>
+                  <button className={cx('profile_menu_btn')}>Log out</button>
+                </div>
               )
-            }
+            )}
           </>
         </div>
       </div>
       <CreateWorkspaceModal />
-    </header >
+    </header>
   )
 }
 

@@ -1,7 +1,16 @@
+import { GiConsoleController } from 'react-icons/gi'
+
 export const cacheInLocalStorage = (key, value) => {
   localStorage.setItem(key, JSON.stringify(value))
 }
-
+export const mapOrder = (originalArray, orderArray, key) => {
+  if (!originalArray || !orderArray || !key) return []
+  const cloneArray = [...originalArray]
+  const orderedArray = cloneArray.sort((a, b) => {
+    return orderArray.indexOf(a[key]) - orderArray.indexOf(b[key])
+  })
+  return orderedArray
+}
 export const colorForm = [
   '#0079BF',
   '#D29034',

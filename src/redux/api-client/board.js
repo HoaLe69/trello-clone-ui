@@ -28,7 +28,20 @@ export const fetchDetailBoard = createAsyncThunk(
     }
   }
 )
-
+export const UpdateColumnOrder = createAsyncThunk(
+  'board/update-order-column',
+  async data => {
+    try {
+      const response = await axiosPrivate.patch(
+        `/board/${data.boardId}/update-order-column`,
+        { ...data.body }
+      )
+      return response.data
+    } catch (e) {
+      console.log(e)
+    }
+  }
+)
 export const fetchListBoard = createAsyncThunk(
   'board/fetchList',
   async workspaceId => {
