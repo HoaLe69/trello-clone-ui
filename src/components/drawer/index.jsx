@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useLayoutEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import classNames from 'classnames/bind'
 import styles from './drawer.module.css'
 import { BsChevronLeft, BsThreeDots } from 'react-icons/bs'
@@ -104,6 +104,10 @@ const Drawer = () => {
                           board.title
                         )}`}
                       >
+                        <div
+                          style={{ background: board.background }}
+                          className={cx('board_thumnail')}
+                        />
                         {board.title}
                       </Link>
                       <span

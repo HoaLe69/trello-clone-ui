@@ -22,6 +22,10 @@
 .nav_link_wrap {
   margin-bottom: 4px;
 }
+.nav_link.nav_active {
+  background-color: #e9f2ff;
+  color: #0c66e4;
+}
 .nav_link {
   display: flex;
   align-items: center;

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Children } from 'react'
 import WorkSpace from '../pages/workspace/index'
 import LanddingPage from '../pages/landding'
 import { path } from '../config/index'
@@ -7,6 +7,7 @@ import LoginPage from '../pages/login'
 import Register from '../pages/register'
 import ProtectedRoute from '../components/protected-route'
 import WorkspaceDetail from '../pages/workspace-detail'
+import CardDetailModal from '../components/modals/card-detail-modal'
 
 export const routesPublic = [
   {
@@ -34,7 +35,13 @@ export const routesForAuthenticateOnly = [
       },
       {
         path: path.board,
-        element: <BoardPage />
+        element: <BoardPage />,
+        children: [
+          {
+            path: 'c/:cardId',
+            element: <CardDetailModal />
+          }
+        ]
       },
       {
         path: path.workspaceDetail,

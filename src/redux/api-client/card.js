@@ -24,6 +24,7 @@ export const fetchListCard = createAsyncThunk(
   async listId => {
     try {
       const response = await axiosPrivate.get(`/card/${listId}/list`)
+      console.log(response)
       return response.data
     } catch (e) {
       console.log(e)

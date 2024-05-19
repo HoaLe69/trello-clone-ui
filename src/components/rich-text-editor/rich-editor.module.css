@@ -1,0 +1,58 @@
+.rich_editor {
+  padding: 2px;
+  border: none;
+  box-shadow: 0 0 0 1px inset #091e4224;
+  background-color: #fff;
+  min-height: 272px;
+  display: flex;
+  flex-direction: column;
+}
+.rich_editor.outline {
+  outline: 2px solid #0079bf;
+}
+.edit_area {
+  padding: 20px;
+}
+
+.toolbar {
+  border-radius: 3px 3px 0 0;
+  box-shadow: 0 2px 0 0 #f1f2f4;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mark_btn {
+  padding: 5px;
+  display: inline-flex;
+  border: none;
+  outline: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color ease 0.2s;
+}
+.mark_btn:hover {
+  background-color: rgba(0, 0, 0, 0.2) !important;
+}
+.button_actions {
+  margin-top: 8px;
+}
+.btn {
+  padding: 6px 12px;
+  box-shadow: none;
+  text-decoration: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color ease 0.2s;
+}
+.btn_save {
+  color: #ffffff;
+  background-color: #0c66e4;
+  margin-right: 10px;
+}
+.btn_save:hover {
+  background-color: #0055cc;
+}

@@ -20,6 +20,12 @@ const BoardMainContent = () => {
   }, [id, dispatch])
   const board = useSelector(state => state.board.detail.board)
   const status = useSelector(state => state.board.detail.status)
+  useEffect(() => {
+    if (board.background) {
+      var root = document.documentElement
+      root.style.setProperty('--board-bg', board.background)
+    }
+  }, [board])
   return (
     <div className={cx('board_main_content')}>
       {status === 'loading' || status === 'idle' ? (

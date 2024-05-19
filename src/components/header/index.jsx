@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind'
-import React from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { showCreatePopover } from '../../redux/popoverSlice'
 import CreateWorkspaceModal from '../modals/modal-create-workspace'
 import CreateMenuPopover from '../popover/header-create-menu-popover'
@@ -8,11 +8,28 @@ import Logo from '../shared/logo'
 import { IoChevronDownOutline } from 'react-icons/io5'
 import styles from './header.module.css'
 import StarredListPopover from '../popover/header-starred-popover'
+import UserAvatar from '../shared/user-avatar'
+import { useLayer } from 'react-laag'
 
 const cx = classNames.bind(styles)
 
 const Header = () => {
   const dispatch = useDispatch()
+  const userLogin = useSelector(state => state.auth.user)
+  const [isOpen, setOpen] = useState(false)
+  const close = () => {
+    setOpen(false)
+  }
+  const { renderLayer, triggerProps, layerProps } = useLayer({
+    isOpen,
+    onOutsideClick: close,
+    onDiappear: close,
+    overflowContainer: false,
+    placement: "bottom-end",
+    triggerOffset: 12,
+    containerOffset: 16,
+    arrowOffset: 16,
+  })
   return (
     <header className={cx('header_container')}>
       <div className={cx('header_container_overlay')}>
@@ -40,20 +57,25 @@ const Header = () => {
               <CreateMenuPopover />
             </div>
           </div>
-          <div className={cx('user_profile')}>
-            <div className={cx('user_profile_wrap_img')}>
-              <img
-                className={cx('user_profile_img')}
-                src="https://cdn.chanhtuoi.com/uploads/2022/01/hinh-avatar-nam-deo-kinh.jpg"
-                alt="user profile"
-              />
+          <>
+            <div {...triggerProps} onClick={() => setOpen(!isOpen)} className={cx('user_profile')}>
+              <UserAvatar small thumbail="#5142aa" displayName={userLogin?.email} />
+              <span className={cx('user_profile_name')}>{userLogin?.email}</span>
             </div>
-            <span className={cx('user_profile_name')}>Lee Hoa</span>
-          </div>
+            {
+              renderLayer(
+                isOpen && (
+                  <div {...layerProps} className={cx("profile_menu")}>
+                    <button className={cx("profile_menu_btn")}>Log out</button>
+                  </div>
+                )
+              )
+            }
+          </>
         </div>
       </div>
       <CreateWorkspaceModal />
-    </header>
+    </header >
   )
 }
 

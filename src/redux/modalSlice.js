@@ -18,6 +18,7 @@ export const modalSlice = createSlice({
 })
 
 export const { showCreateModal, hideCreateModal } = modalSlice.actions
+
 export default modalSlice.reducer
 
 const selectorShowOrHideModalWorkspace = state =>

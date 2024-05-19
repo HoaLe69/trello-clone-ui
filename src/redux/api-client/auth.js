@@ -3,7 +3,7 @@ import axios from '../../config/axios'
 
 export const register = createAsyncThunk('auth/register', async user => {
   try {
-    await new Promise(resolver => setTimeout(resolver, 3000))
+    //    await new Promise(resolver => setTimeout(resolver, 3000))
     const response = await axios.post('/auth/register', user)
     return response.data
   } catch (e) {

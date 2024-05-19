@@ -3,7 +3,7 @@
   --header-height: 60px;
   --container-width: 1300px;
   --drawer-width: 260px;
-  --board-bg: #0079bf;
+  --board-bg: #ffffff; /*#0079bf*/
   --board-header-background-color: #0000003d;
   --text-dynamic: #ffffff;
   --text-dynamic-board-canvas: #000000;
@@ -21,6 +21,7 @@
   transition-timing-function: ease;
 }
 body {
+  font-size: 14px;
   font-family: 'M PLUS 1', sans-serif;
   font-optical-sizing: auto;
   /* font-family: */
@@ -52,4 +53,11 @@ textarea {
   transition-duration: 85ms;
   transition-property: background-color, border-color, box-shadow;
   transition-timing-function: ease;
+}
+button {
+  border: none;
+  outline: none;
+}
+.ui-fixclean {
+  clear: both;
 }

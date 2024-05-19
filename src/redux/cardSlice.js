@@ -9,13 +9,20 @@ const initialState = {
   fetchList: {
     list: [],
     status: 'idle'
+  },
+  activeCard: {
+    id: null
   }
 }
 
 export const cardSlice = createSlice({
   name: 'card',
   initialState,
-  reducers: {},
+  reducers: {
+    getCurrentActiveCardId(state, action) {
+      state.activeCard.id = action.payload
+    }
+  },
   extraReducers: builder => {
     builder
       // create
@@ -45,4 +52,5 @@ export const cardSlice = createSlice({
   }
 })
 
+export const { getCurrentActiveCardId } = cardSlice.actions
 export default cardSlice.reducer

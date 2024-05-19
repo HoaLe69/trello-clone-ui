@@ -3,10 +3,14 @@ import styles from './modal.module.css'
 import classNames from 'classnames/bind'
 const cx = classNames.bind(styles)
 
-const ModalOverlay = ({ children, isOpen }) => {
+const ModalOverlay = ({ children, isOpen, onClick, center }) => {
   return (
     <div
-      style={{ display: isOpen ? 'flex' : 'none' }}
+      onClick={onClick}
+      style={{
+        display: isOpen ? 'flex' : 'none',
+        alignItems: center ? 'center' : 'start'
+      }}
       className={cx('modal_overlay')}
     >
       {children}

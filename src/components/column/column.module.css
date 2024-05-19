@@ -76,6 +76,7 @@
   padding: 2px 8px;
   overflow-y: auto;
   flex-grow: 1;
+  overflow-x: hidden;
   scrollbar-width: thin;
   scrollbar-color: #091e4224 #091e420f;
 }

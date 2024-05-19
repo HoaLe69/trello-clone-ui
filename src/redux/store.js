@@ -10,6 +10,7 @@ import workspaceReducer from './workspaceSlice'
 import boardReducer from './boardSlice'
 import listReducer from './listSlice'
 import cardReducer from './cardSlice'
+import userReducer from './userSlice'
 
 const reducer = combineReducers({
   auth: authReducer,
@@ -18,7 +19,8 @@ const reducer = combineReducers({
   workspace: workspaceReducer,
   board: boardReducer,
   list: listReducer,
-  card: cardReducer
+  card: cardReducer,
+  user: userReducer
 })
 
 const persistConfig = {

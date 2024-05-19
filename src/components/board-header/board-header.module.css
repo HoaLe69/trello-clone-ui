@@ -47,6 +47,7 @@
 .board_header_member {
   display: flex;
   align-items: center;
+  gap: 2px;
   padding: 0 6px;
   border-left: 2px solid rgba(255, 255, 255, 0.2);
 }
@@ -71,8 +72,9 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  padding: 6px;
+  padding: 8px 12px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 16px;
 }

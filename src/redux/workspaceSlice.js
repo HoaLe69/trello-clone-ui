@@ -25,7 +25,7 @@ export const workspaceSlice = createSlice({
   initialState,
   reducers: {
     resetStatus: state => {
-      state.status = 'idle'
+      state.create.status = 'idle'
     }
   },
   extraReducers: builder => {

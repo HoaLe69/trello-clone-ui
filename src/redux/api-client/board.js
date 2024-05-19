@@ -1,10 +1,15 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { axiosPrivate } from '../../config/axios'
 
-export const createBoard = createAsyncThunk('board/create', async board => {
+export const createBoard = createAsyncThunk('board/create', async data => {
   try {
-    await new Promise(resolver => setTimeout(resolver, 3000))
-    const response = await axiosPrivate.post('/board', board)
+    const response = await axiosPrivate.post('/board', data.board)
+    const { boardId } = response.data.data
+    await axiosPrivate.post('/userboard', {
+      userId: data.userId,
+      boardId,
+      role: 0
+    })
     return response.data
   } catch (e) {
     console.log(e)

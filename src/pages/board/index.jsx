@@ -6,6 +6,7 @@ import classNames from 'classnames/bind'
 import styles from './board.module.css'
 import { useDispatch } from 'react-redux'
 import { resetStatus } from '../../redux/boardSlice'
+import { Outlet } from 'react-router-dom'
 
 const cx = classNames.bind(styles)
 
@@ -15,12 +16,13 @@ const BoardPage = () => {
     dispatch(resetStatus())
   }, [])
   return (
-    <div>
+    <div className={cx('board_root')}>
       <Header />
       <div className={cx('board')}>
         <Drawer />
         <BoardMainContent />
       </div>
+      <Outlet />
     </div>
   )
 }

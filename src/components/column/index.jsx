@@ -6,39 +6,68 @@ import AddCardButton from '../add-card-button'
 import Card from '../card'
 import { fetchListCards } from '../../redux/api-client/card'
 import { updateTitle } from '../../redux/api-client/list'
+import { useSortable } from '@dnd-kit/sortable'
+import { CSS } from '@dnd-kit/utilities'
+import { SortableContext } from '@dnd-kit/sortable'
 
 const cx = classNames.bind(styles)
 
-const Column = props => {
-  const [cards, setCards] = useState([])
+const Column = ({ column, containers, setContainers, noEffect }) => {
   const [newCard, setNewCard] = useState({})
-  const { title, columnId } = props.column
+  const { title, columnId } = column
   const [editMode, setEditMode] = useState(false)
   const [textarea, setTextarea] = useState(title)
   const refInput = useRef(null)
   const preTitle = useRef(title)
-
+  const {
+    attributes,
+    setNodeRef,
+    listeners,
+    transform,
+    transition,
+    isDragging
+  } = useSortable({
+    id: columnId,
+    data: {
+      type: 'list'
+    }
+  })
+  const findListById = () => {
+    return containers.find(container => container.columnId === columnId)
+  }
   useEffect(() => {
     const fetchList = async () => {
       const res = await fetchListCards(columnId)
       if (res.data) {
-        setCards(res.data)
+        const container = findListById()
+        if (!container) return
+        container.cards = [...res.data]
+        setContainers([...containers])
       }
     }
-    if (columnId) {
+    if (columnId && !noEffect) {
       fetchList()
     }
-  }, [columnId])
+  }, [])
 
   useEffect(() => {
     if (newCard.title) {
-      setCards(pre => [...pre, newCard])
+      const container = findListById()
+      if (!container) return
+      container.cards = [...container.cards, newCard]
+      setContainers([...containers])
     }
   }, [newCard])
 
   const handleOpenEditMode = useCallback(() => {
     setEditMode(true)
-  }, [])
+    setTimeout(() => {
+      const refEl = refInput.current
+      if (refEl) {
+        refEl.select()
+      }
+    }, 0)
+  }, [refInput])
 
   const handleBlur = useCallback(async () => {
     setEditMode(false)
@@ -52,9 +81,18 @@ const Column = props => {
     }
   }, [textarea, columnId])
   return (
-    <li className={cx('column')}>
+    <li
+      className={cx('column')}
+      {...attributes}
+      ref={setNodeRef}
+      style={{
+        transition,
+        transform: CSS.Translate.toString(transform),
+        opacity: isDragging ? '0.5' : '1'
+      }}
+    >
       <div className={cx('column_inner')}>
-        <div className={cx('column_header')}>
+        <div className={cx('column_header')} {...listeners}>
           <div className={cx('column_header_wrap_name')}>
             <h2
               style={{ display: editMode ? 'none' : 'block' }}
@@ -82,9 +120,13 @@ const Column = props => {
         </div>
         <div style={{ height: '8px' }} />
         <ol className={cx('column_card_list')}>
-          {cards.map(card => {
-            return <Card key={card.cardId} card={card} />
-          })}
+          <SortableContext items={column.cards.map(card => card.cardId)}>
+            {column.cards.map(card => {
+              return (
+                <Card key={card.cardId} titleCol={title} isLink card={card} />
+              )
+            })}
+          </SortableContext>
           <AddCardButton listId={columnId} setNewCard={setNewCard} />
         </ol>
       </div>

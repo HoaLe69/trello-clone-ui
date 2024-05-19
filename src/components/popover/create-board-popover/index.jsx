@@ -45,6 +45,7 @@ const CreateBoardPopover = () => {
   const dispatch = useDispatch()
   const status = useSelector(state => state.board.create.status)
   const board = useSelector(state => state.board.create.board)
+  const userLogin = useSelector(state => state.auth.user)
   const navigate = useNavigate()
 
   const handleSubmit = e => {
@@ -54,12 +55,15 @@ const CreateBoardPopover = () => {
       workSpaceId: selectOption,
       background: colorPicked
     }
-    dispatch(createBoard(boardData))
+    if (userLogin.userId)
+      dispatch(createBoard({ board: boardData, userId: userLogin.userId }))
   }
+
   useEffect(() => {
     if (status === 'succeeded')
       navigate(`/b/${board.boardId}/${transformString(board.title)}`)
   }, [status, board.boardId, navigate, board.title])
+
   const isOpen = useSelector(state => state.popover.isShowCreateBoardPopover)
   const workspaces = useSelector(state => state.workspace.fetchList.list)
   return (
@@ -96,6 +100,7 @@ const CreateBoardPopover = () => {
           onChange={e => setSelectOption(e.target.value)}
           className={cx('form-input-header')}
         >
+          <option defaultValue="selected">-----Chosen workspaces-----</option>
           {workspaces.map(workspace => (
             <option key={workspace.workSpaceId} value={workspace.workSpaceId}>
               {workspace.title}
