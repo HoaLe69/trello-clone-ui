@@ -29,7 +29,7 @@ const LoginPage = () => {
   useEffect(() => {
     if (token) navigate('/workspace')
   }, [token, navigate])
-
+  const error = useSelector(state => state.auth.error)
   return (
     <div className={cx('container')}>
       <form className={cx('form')} onSubmit={formik.handleSubmit}>
@@ -74,6 +74,9 @@ const LoginPage = () => {
             {/* </a> */}
           </div>
         </div>
+        {error &&
+          <span>{error}</span>
+        }
       </form>
     </div>
   )

@@ -7,9 +7,17 @@
   display: flex;
   flex-direction: column;
 }
+
+.rich_editor.render {
+  box-shadow: none;
+  padding: 0;
+  min-height: max-content;
+}
+
 .rich_editor.outline {
   outline: 2px solid #0079bf;
 }
+
 .edit_area {
   padding: 20px;
 }
@@ -34,12 +42,15 @@
   cursor: pointer;
   transition: background-color ease 0.2s;
 }
+
 .mark_btn:hover {
   background-color: rgba(0, 0, 0, 0.2) !important;
 }
+
 .button_actions {
   margin-top: 8px;
 }
+
 .btn {
   padding: 6px 12px;
   box-shadow: none;
@@ -48,11 +59,13 @@
   cursor: pointer;
   transition: background-color ease 0.2s;
 }
+
 .btn_save {
   color: #ffffff;
   background-color: #0c66e4;
   margin-right: 10px;
 }
+
 .btn_save:hover {
   background-color: #0055cc;
 }

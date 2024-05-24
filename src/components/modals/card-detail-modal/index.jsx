@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import ModalOverlay from '../modal-overlay'
 import styles from './card-modal.module.css'
 import classNames from 'classnames/bind'
@@ -8,7 +8,7 @@ import UserAvatar from '../../shared/user-avatar'
 import { FaPlus } from 'react-icons/fa6'
 import { TiDocumentText } from 'react-icons/ti'
 import RichEditor from '../../rich-text-editor'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { RxActivityLog } from 'react-icons/rx'
 import { FaRegUser } from 'react-icons/fa'
 import { MdOutlineNewLabel } from 'react-icons/md'
@@ -16,19 +16,69 @@ import { BsCardChecklist } from 'react-icons/bs'
 import { BsCalendar2Date } from 'react-icons/bs'
 import { PiSelectionBackgroundLight } from 'react-icons/pi'
 import { useLocation } from 'react-router-dom'
+import {
+  UpdateInforCard,
+  fetchCard,
+  fetchListLabelInCard
+} from '../../../redux/api-client/card'
+import CreateLabelPopover from '../../popover/create-label-popover'
+import { useLayer } from 'react-laag'
+import { useSelector } from 'react-redux'
 const cx = classNames.bind(styles)
 
 const CardDetailModal = () => {
   const location = useLocation()
   const { titleCol, titleCard } = location.state
-  const navigate = useNavigate()
+  const [textarea, setTextarea] = useState(titleCard)
+  const token = useSelector(state => state.auth.token)
   const [showEditor, setShowEditor] = useState(false)
+  const [labelCards, setLabelCards] = useState([])
+  const [cardInfor, setCardInfor] = useState({})
+  const { cardId } = useParams()
+  const preTitle = useRef(textarea)
+  const navigate = useNavigate()
   const handleCloseCardDetail = () => {
     navigate(-1)
   }
   const handlePreventCloseCard = e => {
     e.stopPropagation()
   }
+  const handleBlur = async () => {
+    if (!textarea.trim().length || preTitle.current === textarea) return
+    if (!cardId) return
+    const response = await UpdateInforCard(cardId, { title: textarea })
+    if (response.status === 204) {
+      console.log(response)
+      preTitle.current = textarea
+    }
+  }
+  useState(() => {
+    const fetchCard = async () => {
+      const res = await fetchListLabelInCard(cardId, token)
+      if (res) {
+        setLabelCards(res)
+      }
+    }
+    if (cardId) {
+      fetchCard()
+    }
+  }, [cardId])
+  useState(() => {
+    const fetchCardDetail = async () => {
+      const res = await fetchCard(cardId, token)
+      if (res) {
+        const adjustRes = res.data
+        // console.log(JSON.parse(adjustRes.description))
+        if (adjustRes.description != null)
+          adjustRes.description = JSON.parse(adjustRes.description)
+        setCardInfor(adjustRes)
+        setTextarea(adjustRes.title)
+      }
+    }
+    if (cardId) {
+      fetchCardDetail()
+    }
+  }, [cardId])
   return (
     <ModalOverlay onClick={handleCloseCardDetail} isOpen={true}>
       <div onClick={handlePreventCloseCard} className={cx('container')}>
@@ -45,7 +95,9 @@ const CardDetailModal = () => {
             </span>
             <div className={cx('card_title')}>
               <textarea
-                defaultValue={titleCard}
+                value={textarea}
+                onBlur={handleBlur}
+                onChange={e => setTextarea(e.target.value)}
                 className={cx('card_title_input')}
               ></textarea>
             </div>
@@ -68,17 +120,26 @@ const CardDetailModal = () => {
                   </button>
                 </div>
               </div>
-              <div className={cx('card_detail_item')}>
-                <h3 className={cx('card_detail_header')}>Labels</h3>
-                <div className={cx('card_detail_labels_container')}>
-                  <span className={cx('card_detail_label_item')}>DONE</span>
-                  <span className={cx('card_detail_label_item')}>DONE</span>
-                  <span className={cx('card_detail_label_item')}>DONE</span>
-                  <span className={cx('card_detail_label_item')}>DONE</span>
-                  <span className={cx('card_detail_label_item')}>DONE</span>
-                  <span className={cx('card_detail_label_item')}>DONE</span>
+              {labelCards.length > 0 && (
+                <div className={cx('card_detail_item')}>
+                  <h3 className={cx('card_detail_header')}>Labels</h3>
+                  <div className={cx('card_detail_labels_container')}>
+                    {labelCards &&
+                      labelCards.map(labelCard => {
+                        const { label } = labelCard
+                        return (
+                          <span
+                            key={label.labelId}
+                            style={{ backgroundColor: label.theme }}
+                            className={cx('card_detail_label_item')}
+                          >
+                            {label.labelName}
+                          </span>
+                        )
+                      })}
+                  </div>
                 </div>
-              </div>
+              )}
               <div className="ui-fixclean"></div>
             </div>
             <div className={cx('card_des')}>
@@ -91,14 +152,24 @@ const CardDetailModal = () => {
                 </div>
                 <div style={{ marginLeft: '40px' }}>
                   <div style={{ marginBotton: '8px' }}>
-                    {showEditor ? (
-                      <RichEditor handleShow={setShowEditor} />
-                    ) : (
+                    {showEditor && (
+                      <RichEditor
+                        setCardInfor={setCardInfor}
+                        cardInfor={cardInfor}
+                        handleShow={setShowEditor}
+                      />
+                    )}
+                    {!showEditor && cardInfor?.description && (
+                      <div onClick={() => setShowEditor(true)}>
+                        <RichEditor cardInfor={cardInfor} render />
+                      </div>
+                    )}
+                    {!showEditor && !cardInfor?.description && (
                       <div
                         className={cx('card_none_des')}
                         onClick={() => setShowEditor(true)}
                       >
-                        Add a more detailed description...
+                        Enter your description...
                       </div>
                     )}
                   </div>
@@ -125,7 +196,10 @@ const CardDetailModal = () => {
             <h3 className={cx('card_detail_header')}>Add to card</h3>
             <div>
               <ButtonAdd name="Members" icon={<FaRegUser />} />
-              <ButtonAdd name="Labels" icon={<MdOutlineNewLabel />} />
+              <GroupButton
+                setLabelCards={setLabelCards}
+                labelCards={labelCards}
+              />
               <ButtonAdd name="Checklist" icon={<BsCardChecklist />} />
               <ButtonAdd name="Dates" icon={<BsCalendar2Date />} />
               <ButtonAdd name="Cover" icon={<PiSelectionBackgroundLight />} />
@@ -139,11 +213,47 @@ const CardDetailModal = () => {
 
 export default CardDetailModal
 
-const ButtonAdd = ({ icon, name }) => {
+const ButtonAdd = ({ icon, name, onClick, triggerProps }) => {
   return (
-    <button className={cx('btn_add')}>
+    <button className={cx('btn_add')} {...triggerProps} onClick={onClick}>
       <span className={cx('btn_add_icon')}> {icon}</span>
       {name}
     </button>
+  )
+}
+const GroupButton = ({ setLabelCards, labelCards }) => {
+  const [isOpen, setIsOpen] = useState(false)
+  const close = () => {
+    setIsOpen(false)
+  }
+  const { renderLayer, triggerProps, layerProps } = useLayer({
+    isOpen,
+    onOutsideClick: close,
+    overflowContainer: false,
+    auto: true,
+    placement: 'bottom-end',
+    triggerOffset: 12,
+    containerOffset: 16,
+    arrowOffset: 16
+  })
+  return (
+    <>
+      <ButtonAdd
+        triggerProps={triggerProps}
+        onClick={() => setIsOpen(!isOpen)}
+        name="Labels"
+        icon={<MdOutlineNewLabel />}
+      />
+      {renderLayer(
+        isOpen && (
+          <CreateLabelPopover
+            setLabelCards={setLabelCards}
+            labelInCard={labelCards}
+            onClick={() => setIsOpen(!isOpen)}
+            layerProps={layerProps}
+          />
+        )
+      )}
+    </>
   )
 }

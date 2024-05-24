@@ -10,6 +10,7 @@
   background-color: #091e420f;
   overflow: hidden;
 }
+
 .card_close_btn {
   position: absolute;
   top: 8px;
@@ -29,15 +30,18 @@
   align-items: center;
   justify-content: center;
 }
+
 .card_close_btn:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
+
 .card_header {
   padding: 8px 52px;
   position: relative;
   min-height: 32px;
   z-index: 1;
 }
+
 .card_logo {
   font-size: 20px;
   position: absolute;
@@ -45,9 +49,11 @@
   left: 16px;
   color: #44546f;
 }
+
 .card_title {
   padding-top: 12px;
 }
+
 .card_title_input {
   background: #0000;
   border-radius: 4px;
@@ -63,9 +69,11 @@
   border: none;
   width: 100%;
 }
+
 .card_title_input:focus {
   background-color: #ffffff;
 }
+
 .card_header_content {
   display: inline-block;
   margin: 4px 8px 4px 2px;
@@ -88,6 +96,7 @@
   padding: 0 16px 8px 8px;
   width: calc(100% - 600px);
 }
+
 .card_detail_gutter {
   margin-top: 8px;
   margin-left: 40px;
@@ -99,6 +108,7 @@
   margin: 0 8px 8px 0;
   max-width: 100%;
 }
+
 .card_detail_header {
   color: #44546f;
   display: block;
@@ -111,6 +121,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
 .card_detail_member_button {
   border-radius: 25em;
   cursor: pointer;
@@ -128,6 +139,7 @@
   border: none;
   outline: none;
 }
+
 .card_detail_add_button {
   height: 32px;
   width: 32px;
@@ -142,11 +154,13 @@
   color: #44546f;
   cursor: pointer;
 }
+
 .card_detail_labels_container {
   display: flex;
   flex-wrap: wrap;
   gap: 4px;
 }
+
 .card_detail_label_item {
   display: inline-block;
   position: relative;
@@ -157,7 +171,6 @@
   min-width: 48px;
   height: 32px;
   box-sizing: border-box;
-  background-color: rgb(75, 206, 151);
   line-height: 32px;
   color: #ffffff;
   font-size: 14px;
@@ -174,6 +187,7 @@
   margin-bottom: 24px;
   position: relative;
 }
+
 .card_des_header {
   align-items: center;
   display: flex;
@@ -182,6 +196,7 @@
   padding: 8px 0;
   position: relative;
 }
+
 .card_des_icon {
   left: -36px;
   position: absolute;
@@ -190,6 +205,7 @@
   display: flex;
   align-items: center;
 }
+
 .card_none_des {
   box-shadow: none;
   background-color: #091e420f;
@@ -200,16 +216,19 @@
   font-weight: 400;
   border-radius: 3px;
 }
+
 .card_none_des:hover {
   cursor: pointer;
   background-color: #091e4224;
 }
+
 /* SECTION ACTiVTY*/
 .comment {
   display: flex;
   align-items: center;
   gap: 10px;
 }
+
 .comment_input {
   flex: 1;
   padding: 10px 12px;
@@ -219,9 +238,11 @@
     0px 1px 1px #091e4240,
     0px 0px 1px #091e424f;
 }
+
 .comment_input:hover {
   background-color: #f7f8f9;
 }
+
 /* 
 * SECTION SIDEBAR
 * */
@@ -240,9 +261,11 @@
   border-radius: 4px;
   color: #172b4d;
 }
+
 .btn_add:hover {
   background-color: #091e4224;
 }
+
 .btn_add_icon {
   font-size: 16px;
   display: flex;

@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useMemo } from 'react'
 import {
   createEditor,
   Transforms,
@@ -13,6 +13,8 @@ import { MdOutlineFormatUnderlined } from 'react-icons/md'
 import { LuHeading1 } from 'react-icons/lu'
 import classNames from 'classnames/bind'
 import styles from './rich-editor.module.css'
+import { UpdateInforCard } from '../../redux/api-client/card'
+import { useParams } from 'react-router-dom'
 const cx = classNames.bind(styles)
 
 const LIST_TYPES = ['numbered-list', 'bulleted-list']
@@ -85,38 +87,50 @@ const CustomEditor = {
     }
   }
 }
-const initialValue = [
+const fallbackValue = [
   {
     type: 'paragraph',
     children: [{ text: '' }]
   }
 ]
 
-const RichEditor = ({ handleShow }) => {
+const RichEditor = ({ handleShow, setCardInfor, cardInfor, render }) => {
   const [forcusOnEditor, setForcusOnEditor] = useState(false)
   const [editor] = useState(() => withReact(createEditor()))
-
+  const [editorValue, setEditorValue] = useState()
+  const { cardId } = useParams()
   // `useCallback` here to memoize the function for subsequent renders.
   const renderElement = useCallback(props => <Element {...props} />, [])
   const renderLeaf = useCallback(props => <Leaf {...props} />, [])
-
+  const handleSave = async () => {
+    if (!editorValue || !cardId) return
+    const res = await UpdateInforCard(cardId, { description: JSON.stringify(editorValue) })
+    if (res.status === 204) {
+      setCardInfor(pre => {
+        const newCardInfor = pre;
+        newCardInfor.description = editorValue
+        return newCardInfor
+      })
+      handleShow(false)
+    }
+  }
   return (
     <>
-      <div className={cx('rich_editor', { outline: forcusOnEditor })}>
+      <div className={cx('rich_editor', { render }, { outline: forcusOnEditor })}>
         <Slate
-          style={{ background: 'red' }}
           editor={editor}
-          initialValue={initialValue}
+          initialValue={cardInfor?.description || fallbackValue}
           onChange={value => {
             const isAstChange = editor.operations.some(
               op => 'set_selection' !== op.type
             )
             if (isAstChange) {
-              console.log(value)
+              setEditorValue(value)
             }
           }}
         >
           <div
+            style={{ display: render ? 'none' : 'flex' }}
             className={cx('toolbar')}
             onClick={() => {
               if (!forcusOnEditor) return
@@ -135,9 +149,10 @@ const RichEditor = ({ handleShow }) => {
             <BlockButton format="bulleted-list" icon={<FaListUl />} />
           </div>
           <div
-            style={{ flex: 1 }}
+            style={{ flex: 1, backgroundColor: render ? '#091e420f' : '#fff' }}
             onClick={e => {
               e.preventDefault()
+              if (render) return
               if (forcusOnEditor) return
               setForcusOnEditor(true)
               CustomEditor.moveToEnd(editor)
@@ -148,6 +163,7 @@ const RichEditor = ({ handleShow }) => {
                 placeholder="Enter your description..."
                 style={{ outline: 'none' }}
                 onFocus={() => {
+                  if (render) return
                   setForcusOnEditor(true)
                   CustomEditor.moveToEnd(editor)
                 }}
@@ -182,8 +198,8 @@ const RichEditor = ({ handleShow }) => {
           </div>
         </Slate>
       </div>
-      <div className={cx('button_actions')}>
-        <button className={cx('btn', 'btn_save')}>Save</button>
+      <div className={cx('button_actions')} style={{ display: render ? 'none' : 'flex' }}>
+        <button className={cx('btn', 'btn_save')} onClick={handleSave}>Save</button>
         <button className={cx('btn')} onClick={() => handleShow(false)}>
           Cancel
         </button>

@@ -4,7 +4,7 @@ import styles from './user-avatar.module.css'
 
 const cx = classNames.bind(styles)
 
-const UserAvatar = ({ thumbail, medium, small, displayName }) => {
+const UserAvatar = ({ thumbail, medium, small, displayName = "Guest" }) => {
   const isImage = thumbail.charAt(0) === 'h'
   return (
     <div className={cx('avatar', { medium }, { small })}>

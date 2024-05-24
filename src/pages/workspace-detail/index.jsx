@@ -90,12 +90,13 @@ const WorkspaceDetail = () => {
 
 export default WorkspaceDetail
 
-const BoardProject = ({ href, name, background }) => {
+export const BoardProject = ({ href, state, name, background }) => {
   return (
     <Link
       style={{ backgroundColor: background }}
       className={cx('board_tile')}
       to={href}
+      state={{ state }}
     >
       <span className={cx('board_tile_fade')} />
       <div className={cx('board_tile_detail')}>

@@ -27,7 +27,7 @@ const NavWorkspace = () => {
         to="/workspace"
       >
         <FaTrello />
-        <div>Boards</div>
+        <div>Guest</div>
       </Link>
       <hr />
       <div className={cx('nav_main_title')}>Workspaces</div>

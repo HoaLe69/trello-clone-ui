@@ -13,7 +13,13 @@ import { mapOrder } from '../../utils'
 
 const cx = classNames.bind(styles)
 
-const Column = ({ column, containers, setContainers, noEffect, orderCardIds }) => {
+const Column = ({
+  column,
+  containers,
+  setContainers,
+  noEffect,
+  orderCardIds
+}) => {
   const [newCard, setNewCard] = useState({})
   const { title, columnId } = column
   const [editMode, setEditMode] = useState(false)
@@ -21,8 +27,8 @@ const Column = ({ column, containers, setContainers, noEffect, orderCardIds }) =
   const refInput = useRef(null)
   const preTitle = useRef(title)
 
-  const animateLayoutChanges = (args) =>
-    defaultAnimateLayoutChanges({ ...args, wasDragging: true });
+  const animateLayoutChanges = args =>
+    defaultAnimateLayoutChanges({ ...args, wasDragging: true })
   const {
     attributes,
     setNodeRef,
@@ -48,7 +54,11 @@ const Column = ({ column, containers, setContainers, noEffect, orderCardIds }) =
         if (!container) return
         container.cards = [...res.data]
         if (orderCardIds) {
-          container.cards = mapOrder(container.cards, JSON.parse(orderCardIds), 'cardId')
+          container.cards = mapOrder(
+            container.cards,
+            JSON.parse(orderCardIds),
+            'cardId'
+          )
         }
         setContainers([...containers])
       }
