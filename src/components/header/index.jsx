@@ -88,14 +88,14 @@ const Header = () => {
                   >
                     Log out
                   </button>
-                </div >
+                </div>
               )
             )}
           </>
-        </div >
-      </div >
+        </div>
+      </div>
       <CreateWorkspaceModal />
-    </header >
+    </header>
   )
 }
 

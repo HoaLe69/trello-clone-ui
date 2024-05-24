@@ -276,7 +276,7 @@ const BoardCanvas = props => {
           collisionDetection={closestCorners}
           onDragEnd={handleDragEnd}
           onDragStart={handleDragStart}
-        //  onDragOver={handleDragOver}
+          //  onDragOver={handleDragOver}
         >
           <SortableContext items={containers.map(col => col.columnId)}>
             {containers &&
