@@ -45,7 +45,6 @@ export const fetchListCard = createAsyncThunk(
   async listId => {
     try {
       const response = await axiosPrivate.get(`/card/${listId}/list`)
-      console.log(response)
       return response.data
     } catch (e) {
       console.log(e)
@@ -56,6 +55,41 @@ export const fetchListCards = async listId => {
   try {
     const response = await axiosPrivate.get(`/card/${listId}/list`)
     return response.data
+  } catch (e) {
+    console.log(e)
+  }
+}
+export const UpdateInforCard = async (cardId, data) => {
+  try {
+    const response = await axiosPrivate.put(
+      `/card/${cardId}/update-infor-card`,
+      { ...data }
+    )
+    return response
+  } catch (e) {
+    console.log(e)
+  }
+}
+export const fetchListLabelInCard = async (cardId, token) => {
+  try {
+    const res = await axiosPrivate.get(`/cardlabel/${cardId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+    return res.data
+  } catch (e) {
+    console.log(e)
+  }
+}
+export const fetchCard = async (cardId, token) => {
+  try {
+    const res = await axiosPrivate.get(`/card/${cardId}/detail`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+    return res.data
   } catch (e) {
     console.log(e)
   }

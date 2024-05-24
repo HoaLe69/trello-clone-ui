@@ -1,9 +1,9 @@
 import classNames from 'classnames/bind'
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from '../login/loginPage.module.css'
 import Logo from '../../components/shared/logo'
 import Button from '../../components/shared/button'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import * as Yup from 'yup'
 import { useFormik } from 'formik'
 import { register } from '../../redux/api-client/auth'
@@ -14,6 +14,9 @@ const cx = classNames.bind(styles)
 
 const Register = () => {
   const dispatch = useDispatch()
+  // const auth = useSelector(state => state.auth.response)
+  const status = useSelector(state => state.auth.status)
+  const navigate = useNavigate()
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -46,10 +49,9 @@ const Register = () => {
         password: values.password
       }
       dispatch(register(user))
+      navigate('/login')
     }
   })
-  // const auth = useSelector(state => state.auth.response)
-  const status = useSelector(state => state.auth.status)
   return (
     <div className={cx('container')}>
       <form className={cx('form')} onSubmit={formik.handleSubmit}>

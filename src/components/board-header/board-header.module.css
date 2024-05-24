@@ -14,7 +14,27 @@
   color: var(--text-dynamic);
   line-height: 32px;
   padding: 0 10px;
+  border-radius: 5px;
 }
+
+.input_edit {
+  background-color: #ffffff;
+  border: 0;
+  font-weight: bold;
+  font-size: 18px;
+  height: 32px;
+  margin: 0;
+  padding: 0 10px;
+  outline: none;
+  border-radius: 5px;
+  outline: 2px solid #388bff;
+}
+
+.board_header_name:hover {
+  background-color: #a6c5e229;
+  cursor: pointer;
+}
+
 .board_header_action {
   margin-left: auto;
   display: flex;
@@ -26,6 +46,7 @@
   align-self: center;
   justify-items: center;
 }
+
 .board_header_filter_btn {
   margin-right: 10px;
   line-height: 20px;
@@ -39,6 +60,7 @@
   border: none;
   border-radius: 5px;
 }
+
 .board_header_filter_btn:hover {
   cursor: pointer;
   background-color: var(--dynamic-button-hovered);
@@ -56,6 +78,7 @@
   width: 30px;
   height: 30px;
 }
+
 .member_avatar_img {
   width: 100%;
   height: 100%;

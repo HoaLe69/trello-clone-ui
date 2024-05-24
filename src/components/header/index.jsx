@@ -10,10 +10,13 @@ import styles from './header.module.css'
 import StarredListPopover from '../popover/header-starred-popover'
 import UserAvatar from '../shared/user-avatar'
 import { useLayer } from 'react-laag'
+import { useNavigate } from 'react-router-dom'
+import { logout } from '../../redux/authSlice'
 
 const cx = classNames.bind(styles)
 
 const Header = () => {
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   const userLogin = useSelector(state => state.auth.user)
   const [isOpen, setOpen] = useState(false)
@@ -75,15 +78,24 @@ const Header = () => {
             {renderLayer(
               isOpen && (
                 <div {...layerProps} className={cx('profile_menu')}>
-                  <button className={cx('profile_menu_btn')}>Log out</button>
-                </div>
+                  <button
+                    onClick={() => {
+                      localStorage.clear()
+                      dispatch(logout())
+                      navigate('/login')
+                    }}
+                    className={cx('profile_menu_btn')}
+                  >
+                    Log out
+                  </button>
+                </div >
               )
             )}
           </>
-        </div>
-      </div>
+        </div >
+      </div >
       <CreateWorkspaceModal />
-    </header>
+    </header >
   )
 }
 

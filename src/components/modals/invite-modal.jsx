@@ -37,6 +37,7 @@ const InviteModal = ({ isOpen, center, setOpen }) => {
     if (id && userSelected.userId) {
       dispatch(addUserToBoard({ userId: userSelected.userId, boardId: id }))
     }
+    setOpen(false)
   }
   return (
     <ModalOverlay onClick={handleClickOutside} isOpen={isOpen} center={center}>

@@ -4,13 +4,20 @@ import { register, login } from './api-client/auth'
 const initialState = {
   user: {},
   token: null,
-  status: 'idle'
+  status: 'idle',
+  error: null
 }
 
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {},
+  reducers: {
+    logout(state) {
+      state.user = null
+      state.token = null
+      state.status = 'idle'
+    }
+  },
   extraReducers: builder => {
     builder
       .addCase(register.pending, state => {
@@ -34,8 +41,9 @@ export const authSlice = createSlice({
       })
       .addCase(login.rejected, state => {
         state.status = 'failure'
+        state.error = 'Invalid username or password'
       })
   }
 })
-
+export const { logout } = authSlice.actions
 export default authSlice.reducer

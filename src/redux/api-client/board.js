@@ -53,3 +53,15 @@ export const fetchListBoard = createAsyncThunk(
     }
   }
 )
+
+export const UpdateBoardTitle = async (boardId, data) => {
+  try {
+    const response = await axiosPrivate.patch(
+      `/board/${boardId}/update-title`,
+      { ...data }
+    )
+    return response.data
+  } catch (e) {
+    console.log(e)
+  }
+}

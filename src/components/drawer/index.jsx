@@ -16,7 +16,7 @@ const cx = classNames.bind(styles)
 
 const Drawer = () => {
   const dispatch = useDispatch()
-  const [isSlideIn, setIsSlideIn] = useState(false)
+  const [isSlideIn, setIsSlideIn] = useState(true)
   const currentWorkspaceId = localStorage.getItem('current-workspace')
   const handleSlideInDrawer = useCallback(() => {
     setIsSlideIn(true)

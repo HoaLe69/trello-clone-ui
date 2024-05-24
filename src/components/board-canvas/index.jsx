@@ -13,13 +13,13 @@ import {
   PointerSensor,
   useSensors,
   useSensor,
-  closestCorners,
+  closestCorners
 } from '@dnd-kit/core'
 
 import {
   SortableContext,
   arrayMove,
-  sortableKeyboardCoordinates,
+  sortableKeyboardCoordinates
 } from '@dnd-kit/sortable'
 import Card from '../card'
 import { useParams } from 'react-router-dom'
@@ -39,7 +39,7 @@ const cx = classNames.bind(styles)
 const BoardCanvas = props => {
   const { columns, orderColumn } = props
   const [containers, setContainers] = useState(() => {
-    let newList = columns;
+    let newList = columns
     if (orderColumn) {
       newList = mapOrder(columns, JSON.parse(orderColumn), 'columnId')
     }
@@ -143,7 +143,11 @@ const BoardCanvas = props => {
           overItemIndex
         )
         setContainers(newItems)
-        await UpdateCardsOrder(activeContainer.columnId, { orderCardIds: JSON.stringify(newItems[activeContainerIndex].cards.map(card => card.cardId)) })
+        await UpdateCardsOrder(activeContainer.columnId, {
+          orderCardIds: JSON.stringify(
+            newItems[activeContainerIndex].cards.map(card => card.cardId)
+          )
+        })
       } else {
         // in different container
         let newItems = [...containers]
@@ -274,22 +278,19 @@ const BoardCanvas = props => {
           onDragStart={handleDragStart}
         //  onDragOver={handleDragOver}
         >
-          <SortableContext
-            items={
-              containers.map(col => col.columnId)
-            }
-          >
-            {containers && containers?.map(col => {
-              return (
-                <Column
-                  containers={containers}
-                  setContainers={setContainers}
-                  orderCardIds={col.orderCardIds}
-                  column={col}
-                  key={col.columnId}
-                />
-              )
-            })}
+          <SortableContext items={containers.map(col => col.columnId)}>
+            {containers &&
+              containers?.map(col => {
+                return (
+                  <Column
+                    containers={containers}
+                    setContainers={setContainers}
+                    orderCardIds={col.orderCardIds}
+                    column={col}
+                    key={col.columnId}
+                  />
+                )
+              })}
           </SortableContext>
           <DragOverlay>
             {/*for card*/}
