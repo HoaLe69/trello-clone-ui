@@ -1,0 +1,8 @@
+.board {
+  display: flex;
+  align-items: start;
+}
+.board_root {
+  background-color: var(--board-bg);
+  transition: background-color ease 500ms;
+}

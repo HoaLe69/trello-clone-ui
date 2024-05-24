@@ -3,5 +3,6 @@ export const path = {
   login: '/login',
   register: '/register',
   workspace: '/workspace',
-  board: '/:id/:name'
+  board: '/b/:id/:name',
+  workspaceDetail: '/w/:id'
 }

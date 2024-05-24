@@ -1,0 +1,36 @@
+.colorButton {
+  height: 32px;
+  border-radius: 5px;
+  border: none;
+}
+
+.colorButton:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px;
+  gap: 10px;
+  width: 100%;
+}
+
+.color-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.form-input-header {
+  height: 32px;
+  padding: 8px 12px;
+  border: solid 1px #dfe1e6;
+  outline: none;
+}
+
+.form-input-header:focus {
+  outline: solid 2px #00aecc;
+}

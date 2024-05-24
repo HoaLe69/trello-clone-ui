@@ -3,20 +3,17 @@
   height: var(--header-height);
   align-items: center;
   gap: 5px;
+  padding: 0 8px;
 }
 
 .image {
-  width: 25px;
-  height: 40px;
+  width: 20px;
+  height: 25px;
   cursor: pointer;
 }
 
 .name {
   cursor: pointer;
-  font-size: 14px;
-}
-
-.name h1 {
-  font-weight: 800;
-  color: #253858;
+  font-size: 0.7rem;
+  font-weight: 600;
 }

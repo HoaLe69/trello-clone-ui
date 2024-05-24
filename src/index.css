@@ -1,9 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1:wght@100..900&display=swap');
 :root {
   --header-height: 60px;
   --container-width: 1300px;
+  --drawer-width: 260px;
+  --board-bg: #ffffff; /*#0079bf*/
+  --board-header-background-color: #0000003d;
+  --text-dynamic: #ffffff;
+  --text-dynamic-board-canvas: #000000;
+  --dynamic-button-hovered: #a6c5e229;
+  --button-hovered-bg: #091e4224;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.animation-color {
+  transition-property: background-color, border-color, box-shadow;
+  transition-duration: 85ms;
+  transition-timing-function: ease;
 }
 body {
-  margin: 0;
+  font-size: 14px;
+  font-family: 'M PLUS 1', sans-serif;
+  font-optical-sizing: auto;
+  /* font-family: */
+  /*   SF Pro Display, */
+  /*   SF Pro Icons, */
+  /*   Helvetica, */
+  /*   Neue, */
+  /*   Helvetica, */
+  /*   Arial, */
+  /*   sans-serif; */
+}
+hr {
+  background-color: #091e4224;
+  border: 0;
+  height: 1px;
+  margin: 16px 0;
+  padding: 0;
+  width: 100%;
+}
+textarea {
   font-family:
     SF Pro Display,
     SF Pro Icons,
@@ -12,6 +50,14 @@ body {
     Helvetica,
     Arial,
     sans-serif;
-  padding: 0;
-  box-sizing: border-box;
+  transition-duration: 85ms;
+  transition-property: background-color, border-color, box-shadow;
+  transition-timing-function: ease;
+}
+button {
+  border: none;
+  outline: none;
+}
+.ui-fixclean {
+  clear: both;
 }

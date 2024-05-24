@@ -14,3 +14,10 @@
   background-color: rgb(7, 71, 166);
   cursor: pointer;
 }
+
+.btn.btn__disable {
+  background-color: #091e4208;
+  color: #091e424f;
+  cursor: not-allowed;
+  pointer-events: none;
+}

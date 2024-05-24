@@ -1,0 +1,80 @@
+.header_create_menu_popover {
+  position: absolute;
+  z-index: 20;
+  top: 120%;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow:
+    0px 8px 12px #091e4226,
+    0px 0px 1px #091e424f;
+  width: 304px;
+}
+.header_create_menu_popover.right {
+  top: 0;
+  left: 105%;
+}
+.wrapper {
+  padding: 12px;
+}
+.popover_nav {
+  margin: 0 -12px;
+}
+
+.nav_list {
+  list-style: none;
+}
+
+.nav_button {
+  background: #ffffff;
+  text-align: left;
+  outline: none;
+  border: none;
+  padding: 6px 12px;
+  display: flex;
+  flex-direction: column;
+}
+.nav_button:hover {
+  cursor: pointer;
+  background: #091e420f;
+}
+.nav_button_title {
+  display: flex;
+  align-items: center;
+  line-height: 16px;
+}
+.nav_button_icon {
+  display: flex;
+  align-items: center;
+  line-height: 20px;
+  padding: 0 4px;
+}
+.nav_des {
+  color: #44546f;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  margin: 4px 0 0 0;
+  padding: 0;
+}
+
+/* 
+* css starred list popover
+* */
+.img_wrap {
+  padding: 0 12px;
+}
+.empty_list_img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.popover_empty_text {
+  text-align: center;
+  color: #44546f;
+  margin-top: 12px;
+  margin-bottom: 8px;
+}
