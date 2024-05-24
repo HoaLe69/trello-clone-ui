@@ -78,11 +78,16 @@ const Header = () => {
             {renderLayer(
               isOpen && (
                 <div {...layerProps} className={cx('profile_menu')}>
-                  <button onClick={() => {
-                    localStorage.clear()
-                    dispatch(logout())
-                    navigate('/login')
-                  }} className={cx('profile_menu_btn')}>Log out</button>
+                  <button
+                    onClick={() => {
+                      localStorage.clear()
+                      dispatch(logout())
+                      navigate('/login')
+                    }}
+                    className={cx('profile_menu_btn')}
+                  >
+                    Log out
+                  </button>
                 </div>
               )
             )}

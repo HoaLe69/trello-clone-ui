@@ -31,7 +31,9 @@ const BoardHeader = ({ title }) => {
     }
   }, [id, dispatch])
   const handleOpenEditMode = () => {
-    const _user = listUserBoard.find(userBoard => userBoard.userId === user.userId)
+    const _user = listUserBoard.find(
+      userBoard => userBoard.userId === user.userId
+    )
     if (_user.role === 1) return
     setEditMode(true)
     setTimeout(() => {
@@ -43,7 +45,10 @@ const BoardHeader = ({ title }) => {
   }
   const handleBlur = async () => {
     setEditMode(false)
-    if (inputValue.trim().length === 0 || inputValue === refInputValue.current) {
+    if (
+      inputValue.trim().length === 0 ||
+      inputValue === refInputValue.current
+    ) {
       setInputValue(refInputValue.current)
       return
     }
@@ -57,10 +62,22 @@ const BoardHeader = ({ title }) => {
     <>
       <div className={cx('board_header')}>
         <div className={cx('board_header_inner')}>
-          <h2 onClick={handleOpenEditMode} style={{ display: editMode ? "none" : 'block' }} className={cx('board_header_name')}>{inputValue}</h2>
-          {
-            editMode && <input ref={refInputEl} onChange={(e) => setInputValue(e.target.value)} onBlur={handleBlur} className={cx("input_edit")} value={inputValue} />
-          }
+          <h2
+            onClick={handleOpenEditMode}
+            style={{ display: editMode ? 'none' : 'block' }}
+            className={cx('board_header_name')}
+          >
+            {inputValue}
+          </h2>
+          {editMode && (
+            <input
+              ref={refInputEl}
+              onChange={e => setInputValue(e.target.value)}
+              onBlur={handleBlur}
+              className={cx('input_edit')}
+              value={inputValue}
+            />
+          )}
           <div className={cx('board_header_action')}>
             <button
               className={cx('board_header_filter_btn', 'animation-color')}
@@ -71,18 +88,19 @@ const BoardHeader = ({ title }) => {
               Filter
             </button>
             <div className={cx('board_header_member')}>
-              {listUserBoard.length > 0 && listUserBoard.map(userBoard => {
-                const { user } = userBoard
-                return (
-                  <div key={user?.userId} className={cx('member')}>
-                    <UserAvatar
-                      thumbail="#5142aa"
-                      medium
-                      displayName={user.email}
-                    />
-                  </div>
-                )
-              })}
+              {listUserBoard.length > 0 &&
+                listUserBoard.map(userBoard => {
+                  const { user } = userBoard
+                  return (
+                    <div key={user?.userId} className={cx('member')}>
+                      <UserAvatar
+                        thumbail="#5142aa"
+                        medium
+                        displayName={user.email}
+                      />
+                    </div>
+                  )
+                })}
             </div>
             <button
               onClick={handleShowInviteModal}

@@ -18,7 +18,6 @@ const Register = () => {
   const status = useSelector(state => state.auth.status)
   const navigate = useNavigate()
   const formik = useFormik({
-
     initialValues: {
       email: '',
       password: '',

@@ -17,7 +17,9 @@ const WorkSpace = () => {
   useEffect(() => {
     const fetchBoards = async () => {
       try {
-        const res = await axiosPrivate.get(`/userboard/${user?.userId}/guest-board`)
+        const res = await axiosPrivate.get(
+          `/userboard/${user?.userId}/guest-board`
+        )
         if (res.data) {
           setGuestBoard(res.data.data)
         }
@@ -31,7 +33,6 @@ const WorkSpace = () => {
   }, [user.userId])
   console.log(guestBoard)
   const boards = [
-
     'Trello Clone',
     'Facebook Clone',
     'Instagram',
@@ -55,20 +56,22 @@ const WorkSpace = () => {
                   Create new board
                 </span>
               </div>
-              {guestBoard.length > 0 ? guestBoard.map((boardDetail, index) => {
-                const { board } = boardDetail
-                return (
-                  <BoardProject
-                    key={board.boardId}
-                    name={board.title}
-                    background={board.background}
-                    state={{ guest: 'guest' }}
-                    href={`/b/${board.boardId}/${transformString(board.title)}`}
-                  />
-                )
-              })
-                : <div></div>
-              }
+              {guestBoard.length > 0 ? (
+                guestBoard.map((boardDetail, index) => {
+                  const { board } = boardDetail
+                  return (
+                    <BoardProject
+                      key={board.boardId}
+                      name={board.title}
+                      background={board.background}
+                      state={{ guest: 'guest' }}
+                      href={`/b/${board.boardId}/${transformString(board.title)}`}
+                    />
+                  )
+                })
+              ) : (
+                <div></div>
+              )}
             </div>
           </div>
         </div>

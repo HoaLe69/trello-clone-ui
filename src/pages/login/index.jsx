@@ -74,9 +74,7 @@ const LoginPage = () => {
             {/* </a> */}
           </div>
         </div>
-        {error &&
-          <span>{error}</span>
-        }
+        {error && <span>{error}</span>}
       </form>
     </div>
   )

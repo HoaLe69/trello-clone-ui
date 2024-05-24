@@ -104,10 +104,12 @@ const RichEditor = ({ handleShow, setCardInfor, cardInfor, render }) => {
   const renderLeaf = useCallback(props => <Leaf {...props} />, [])
   const handleSave = async () => {
     if (!editorValue || !cardId) return
-    const res = await UpdateInforCard(cardId, { description: JSON.stringify(editorValue) })
+    const res = await UpdateInforCard(cardId, {
+      description: JSON.stringify(editorValue)
+    })
     if (res.status === 204) {
       setCardInfor(pre => {
-        const newCardInfor = pre;
+        const newCardInfor = pre
         newCardInfor.description = editorValue
         return newCardInfor
       })
@@ -116,7 +118,9 @@ const RichEditor = ({ handleShow, setCardInfor, cardInfor, render }) => {
   }
   return (
     <>
-      <div className={cx('rich_editor', { render }, { outline: forcusOnEditor })}>
+      <div
+        className={cx('rich_editor', { render }, { outline: forcusOnEditor })}
+      >
         <Slate
           editor={editor}
           initialValue={cardInfor?.description || fallbackValue}
@@ -198,8 +202,13 @@ const RichEditor = ({ handleShow, setCardInfor, cardInfor, render }) => {
           </div>
         </Slate>
       </div>
-      <div className={cx('button_actions')} style={{ display: render ? 'none' : 'flex' }}>
-        <button className={cx('btn', 'btn_save')} onClick={handleSave}>Save</button>
+      <div
+        className={cx('button_actions')}
+        style={{ display: render ? 'none' : 'flex' }}
+      >
+        <button className={cx('btn', 'btn_save')} onClick={handleSave}>
+          Save
+        </button>
         <button className={cx('btn')} onClick={() => handleShow(false)}>
           Cancel
         </button>
