@@ -47,6 +47,7 @@ export const fetchListBoard = createAsyncThunk(
   async workspaceId => {
     try {
       const response = await axiosPrivate.get(`/board/${workspaceId}/list`)
+      console.log(response)
       return response.data
     } catch (e) {
       console.log(e)

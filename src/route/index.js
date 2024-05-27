@@ -1,4 +1,4 @@
-import React, { Children } from 'react'
+import React from 'react'
 import WorkSpace from '../pages/workspace/index'
 import LanddingPage from '../pages/landding'
 import { path } from '../config/index'

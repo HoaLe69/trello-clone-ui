@@ -13,7 +13,9 @@ import {
   PointerSensor,
   useSensors,
   useSensor,
-  closestCorners
+  closestCorners,
+  closestCenter,
+  rectIntersection
 } from '@dnd-kit/core'
 
 import {
@@ -268,15 +270,35 @@ const BoardCanvas = props => {
       setContainers(newItems)
     }
   }
+  const customCollisionDetectionAlgorithm = ({
+    droppableContainers,
+    ...args
+  }) => {
+    const rectIntersectionCollisions = rectIntersection({
+      ...args,
+      droppableContainers: droppableContainers.filter(
+        ({ id }) => id === 'trash'
+      )
+    })
+    if (rectIntersectionCollisions.length > 0) {
+      return rectIntersectionCollisions
+    }
+    return closestCorners({
+      ...args,
+      droppableContainers: droppableContainers.filter(
+        ({ id }) => id !== 'trash'
+      )
+    })
+  }
   return (
     <div className={cx('board_canvas')}>
       <ol id="board" className={cx('board')}>
         <DndContext
           sensors={sensors}
-          collisionDetection={closestCorners}
+          collisionDetection={customCollisionDetectionAlgorithm}
           onDragEnd={handleDragEnd}
           onDragStart={handleDragStart}
-          //  onDragOver={handleDragOver}
+          onDragOver={handleDragOver}
         >
           <SortableContext items={containers.map(col => col.columnId)}>
             {containers &&

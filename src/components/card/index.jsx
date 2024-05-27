@@ -48,6 +48,7 @@ const Card = ({ isLink, card, titleCol }) => {
     <li
       ref={setNodeRef}
       {...attributes}
+      {...listeners}
       style={{
         transition,
         transform: CSS.Translate.toString(transform),
@@ -55,7 +56,7 @@ const Card = ({ isLink, card, titleCol }) => {
       }}
       className={cx('card')}
     >
-      <div {...listeners} className={cx('card_border')}>
+      <div className={cx('card_border')}>
         <div className={cx('card_inner')}>
           {cover && (
             <div

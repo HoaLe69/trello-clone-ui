@@ -10,10 +10,13 @@ import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 import { SortableContext, defaultAnimateLayoutChanges } from '@dnd-kit/sortable'
 import { mapOrder } from '../../utils'
+import { FaCloudscale } from 'react-icons/fa6'
+import { DndContext } from '@dnd-kit/core'
 
 const cx = classNames.bind(styles)
 
 const Column = ({
+  children,
   column,
   containers,
   setContainers,

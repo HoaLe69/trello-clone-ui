@@ -26,6 +26,7 @@ const WorkspaceDetail = () => {
     }
   }, [id, dispatch])
   const boards = useSelector(state => state.board.fetchList.list)
+  console.log('workspace_main')
   return (
     <div className={cx('container')}>
       <Header />

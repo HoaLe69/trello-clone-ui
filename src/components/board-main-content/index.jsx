@@ -10,8 +10,6 @@ import { fetchDetailBoard } from '../../redux/api-client/board'
 const cx = classNames.bind(styles)
 
 const BoardMainContent = () => {
-  // const { board } = mockData
-  const [list, setList] = useState([])
   const dispatch = useDispatch()
   const { id } = useParams()
   useEffect(() => {
